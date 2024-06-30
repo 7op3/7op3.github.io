@@ -1,3 +1,3 @@
 # website
 
-im just gonna use this as like a img hosting thing r whtvr lol
+WIP (might get back into web dev :3)
