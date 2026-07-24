@@ -1,0 +1,31 @@
+title: Seven
+tagline: Personal site of 7op3
+description: >-
+  Personal website of Seven (7op3) — links, recommendations, and the occasional
+  work in progress.
+author: 7op3
+email:
+url: "https://seven.is-a.dev"
+
+theme: minima
+
+# Nav bar order (top right of every page).
+header_pages:
+  - socials.md
+  - recs.md
+
+# Minima social links (shown in the footer).
+minima:
+  social_links:
+    - { platform: youtube, user_url: "https://youtube.com/@7op3" }
+    - { platform: twitter, user_url: "https://twitter.com/autisticrobots" }
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
