@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-# Hi, I'm Seven (7op3) 👋
+# Hi, I'm Amelia 👋
 
 Welcome to my little corner of the internet.
 

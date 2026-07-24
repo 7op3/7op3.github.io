@@ -1,0 +1,114 @@
+---
+# Front matter (the dashes) tells Jekyll to process this Sass file.
+---
+
+@import "minima";
+
+// ---- Theme toggle button ----
+.theme-toggle {
+  float: right;
+  margin: 8px 0 0 18px;
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  line-height: 34px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid $grey-color-light;
+  border-radius: 50%;
+  color: inherit;
+
+  &:hover { border-color: $grey-color; }
+}
+
+@include media-query($on-palm) {
+  .theme-toggle {
+    position: absolute;
+    top: 9px;
+    right: 55px;
+    margin: 0;
+  }
+}
+
+// ---- Dark theme ----
+$dark-bg:        #121212;
+$dark-surface:   #1e1e1e;
+$dark-text:      #e6e6e6;
+$dark-muted:     #9aa0a6;
+$dark-link:      #7cb0ff;
+$dark-border:    #333;
+
+html {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+[data-theme="dark"] {
+  background-color: $dark-bg;
+
+  body {
+    background-color: $dark-bg;
+    color: $dark-text;
+  }
+
+  a { color: $dark-link; }
+  a:visited { color: $dark-link; }
+  a:hover { color: lighten($dark-link, 10%); }
+
+  .site-header {
+    background-color: $dark-bg;
+    border-top-color: $dark-link;
+    border-bottom-color: $dark-border;
+  }
+
+  .site-title,
+  .site-title:visited { color: $dark-text; }
+
+  .site-nav {
+    .page-link { color: $dark-text; }
+
+    @include media-query($on-palm) {
+      background-color: $dark-surface;
+      border-color: $dark-border;
+
+      .menu-icon > svg { fill: $dark-text; }
+    }
+  }
+
+  .theme-toggle {
+    border-color: $dark-border;
+    &:hover { border-color: $dark-muted; }
+  }
+
+  .site-footer {
+    background-color: $dark-bg;
+    border-top-color: $dark-border;
+  }
+
+  .footer-col-wrapper,
+  .site-footer .footer-heading { color: $dark-muted; }
+
+  blockquote {
+    color: $dark-muted;
+    border-left-color: $dark-border;
+  }
+
+  pre,
+  code {
+    background-color: $dark-surface;
+    border-color: $dark-border;
+  }
+
+  .highlight,
+  .highlighter-rouge .highlight { background: $dark-surface; }
+
+  table {
+    color: $dark-text;
+    border-color: $dark-border;
+
+    th, td { border-color: $dark-border; }
+    th { background-color: lighten($dark-surface, 6%); }
+    tr:nth-child(even) { background-color: lighten($dark-surface, 3%); }
+  }
+}
