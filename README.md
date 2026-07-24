@@ -3,6 +3,8 @@
 My personal website, built with [Jekyll](https://jekyllrb.com/) and the
 [minima](https://github.com/jekyll/minima) theme, hosted on GitHub Pages.
 
+Quick warning, this site has been made with the assistance of ai, so there are probable errors and the like.
+
 ## Editing
 
 Pages are written in Markdown at the repo root:
