@@ -2,119 +2,307 @@
 # Front matter (the dashes) tells Jekyll to process this Sass file.
 ---
 
-@import "minima";
+// ---- Web 2.0 (2007–2010) gloss theme ----
 
-// ---- Theme toggle button ----
-.theme-toggle {
-  float: right;
-  margin: 8px 0 0 18px;
-  padding: 0;
-  width: 36px;
-  height: 36px;
-  line-height: 34px;
-  font-size: 18px;
-  text-align: center;
-  cursor: pointer;
-  background: transparent;
-  border: 1px solid $grey-color-light;
-  border-radius: 50%;
-  color: inherit;
+// Light theme
+$light-bg:        #eef3f9;
+$light-panel:     #ffffff;
+$light-text:      #333333;
+$light-muted:     #7a8696;
+$light-link:      #0b5ed7;
+$light-link-hover:#0845a8;
+$light-border:    #cfd8e3;
 
-  &:hover { border-color: $grey-color; }
+// Dark theme
+$dark-bg:         #0e1520;
+$dark-panel:      #17202e;
+$dark-text:       #dde4ee;
+$dark-muted:      #8b98ab;
+$dark-link:       #7cb0ff;
+$dark-link-hover: #a5c8ff;
+$dark-border:     #2a3850;
+
+$header-grad-light: linear-gradient(to bottom, #86c5f4 0%, #5a9fe0 45%, #4a8fd6 55%, #6fb1ec 100%);
+$header-grad-dark:  linear-gradient(to bottom, #4a77c0 0%, #3560a8 45%, #2c5496 55%, #3d6cb0 100%);
+$btn-grad-light:    linear-gradient(to bottom, #7db9f0 0%, #4a8fd6 100%);
+$btn-grad-dark:     linear-gradient(to bottom, #3a6cb8 0%, #2c5496 100%);
+
+$font-stack: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+// ---- Base ----
+
+* { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-@include media-query($on-palm) {
-  .theme-toggle {
-    position: absolute;
-    top: 9px;
-    right: 55px;
-    margin: 0;
+body {
+  margin: 0;
+  font-family: $font-stack;
+  font-size: 15px;
+  line-height: 1.6;
+  color: $light-text;
+  background-color: $light-bg;
+  background-image: linear-gradient(to bottom, #f5f8fc 0%, $light-bg 240px);
+  background-repeat: no-repeat;
+}
+
+a {
+  color: $light-link;
+  text-decoration: none;
+
+  &:hover { color: $light-link-hover; text-decoration: underline; }
+  &:visited { color: $light-link; }
+}
+
+.wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// ---- Header ----
+
+.site-header {
+  background: $header-grad-light;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.header-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 12px 0;
+}
+
+.site-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+
+  &:visited { color: #fff; }
+  &:hover { color: #fff; text-decoration: none; }
+}
+
+.site-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.page-link {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  border-radius: 14px;
+
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.22);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
   }
 }
 
-// ---- Footer ----
-.footer-description {
-  margin: 0;
-  color: $grey-color;
-  @include relative-font-size(0.9375);
+.theme-toggle {
+  margin-left: 12px;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  line-height: 30px;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  background: $btn-grad-light;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  &:hover { filter: brightness(1.08); }
 }
+
+// ---- Content ----
+
+.page-content {
+  padding: 28px 0 40px;
+}
+
+.panel {
+  background-color: $light-panel;
+  border: 1px solid $light-border;
+  border-radius: 8px;
+  padding: 24px 28px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+.page-heading {
+  margin: 0 0 18px;
+  font-size: 22px;
+  color: #1c2b3a;
+  padding-bottom: 8px;
+  border-bottom: 1px solid $light-border;
+}
+
+.home-intro h1 {
+  margin: 0 0 12px;
+  font-size: 26px;
+  color: #1c2b3a;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.home-intro p { margin: 0 0 12px; }
+.home-intro p:last-child { margin-bottom: 0; }
+
+// ---- Footer ----
+
+.site-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.35);
+  padding: 14px 0;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+
+.footer-copy,
+.footer-stamp {
+  margin: 0;
+  font-size: 13px;
+  color: $light-muted;
+}
+
+.rss-link {
+  font-weight: bold;
+  color: #ff6600;
+
+  &:hover { color: #cc5200; }
+  &:visited { color: #ff6600; }
+}
+
+// ---- Misc content styles ----
+
+blockquote {
+  margin: 16px 0;
+  padding: 4px 16px;
+  color: $light-muted;
+  border-left: 4px solid $light-border;
+}
+
+pre, code {
+  font-family: Menlo, Consolas, Monaco, "Courier New", monospace;
+  font-size: 13px;
+  background-color: #f4f6f9;
+  border: 1px solid $light-border;
+  border-radius: 4px;
+}
+
+code { padding: 1px 5px; }
+
+pre {
+  padding: 10px 14px;
+  overflow-x: auto;
+
+  code { padding: 0; border: none; background: none; }
+}
+
+table {
+  margin: 16px 0;
+  border-collapse: collapse;
+  color: $light-text;
+
+  th, td { padding: 6px 12px; border: 1px solid $light-border; }
+  th { background-color: #eef3f9; }
+}
+
+img { max-width: 100%; border-radius: 6px; }
 
 // ---- Dark theme ----
-$dark-bg:        #121212;
-$dark-surface:   #1e1e1e;
-$dark-text:      #e6e6e6;
-$dark-muted:     #9aa0a6;
-$dark-link:      #7cb0ff;
-$dark-border:    #333;
-
-html {
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
 
 [data-theme="dark"] {
   background-color: $dark-bg;
 
   body {
     background-color: $dark-bg;
+    background-image: linear-gradient(to bottom, #131c2b 0%, $dark-bg 240px);
     color: $dark-text;
   }
 
-  a { color: $dark-link; }
-  a:visited { color: $dark-link; }
-  a:hover { color: lighten($dark-link, 10%); }
+  a {
+    color: $dark-link;
+    &:hover { color: $dark-link-hover; }
+    &:visited { color: $dark-link; }
+  }
 
   .site-header {
-    background-color: $dark-bg;
-    border-top-color: $dark-link;
+    background: $header-grad-dark;
+  }
+
+  .theme-toggle { background: $btn-grad-dark; }
+
+  .panel {
+    background-color: $dark-panel;
+    border-color: $dark-border;
+  }
+
+  .page-heading {
+    color: #e4ebf5;
     border-bottom-color: $dark-border;
   }
 
-  .site-title,
-  .site-title:visited { color: $dark-text; }
-
-  .site-nav {
-    .page-link { color: $dark-text; }
-
-    @include media-query($on-palm) {
-      background-color: $dark-surface;
-      border-color: $dark-border;
-
-      .menu-icon > svg { fill: $dark-text; }
-    }
-  }
-
-  .theme-toggle {
-    border-color: $dark-border;
-    &:hover { border-color: $dark-muted; }
+  .home-intro h1 {
+    color: #e4ebf5;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
   }
 
   .site-footer {
-    background-color: $dark-bg;
+    background: rgba(255, 255, 255, 0.03);
     border-top-color: $dark-border;
   }
 
-  .footer-description { color: $dark-muted; }
+  .footer-copy,
+  .footer-stamp { color: $dark-muted; }
 
   blockquote {
     color: $dark-muted;
     border-left-color: $dark-border;
   }
 
-  pre,
-  code {
-    background-color: $dark-surface;
+  pre, code {
+    background-color: #0d1420;
     border-color: $dark-border;
   }
-
-  .highlight,
-  .highlighter-rouge .highlight { background: $dark-surface; }
 
   table {
     color: $dark-text;
-    border-color: $dark-border;
 
     th, td { border-color: $dark-border; }
-    th { background-color: lighten($dark-surface, 6%); }
-    tr:nth-child(even) { background-color: lighten($dark-surface, 3%); }
+    th { background-color: lighten($dark-panel, 6%); }
   }
+}
+
+// ---- Responsive ----
+
+@media (max-width: 600px) {
+  .header-bar { gap: 8px; }
+  .site-title { font-size: 20px; }
+  .site-nav { margin-left: 0; width: 100%; }
+  .page-link { padding: 3px 10px; }
+  .theme-toggle { margin-left: auto; }
+  .panel { padding: 18px; }
+  .footer-row { flex-direction: column; gap: 2px; }
 }
