@@ -1,0 +1,27 @@
+<aside class="sidebar">
+  <div class="widget">
+    <h2 class="widget-title">About</h2>
+    <div class="widget-body">
+      <p>{{- site.description | escape -}}</p>
+    </div>
+  </div>
+
+  <div class="widget">
+    <h2 class="widget-title">Elsewhere</h2>
+    <div class="widget-body">
+      <ul class="widget-list">
+        {%- for social in site.socials -%}
+        <li><a href="{{ social.url }}" rel="me">{{ social.name | escape }}</a></li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+
+  <div class="widget">
+    <h2 class="widget-title">Subscribe</h2>
+    <div class="widget-body">
+      <p class="subscribe-text">Keep up with the feed:</p>
+      <a class="rss-button" href="{{ "/feed.xml" | relative_url }}">RSS</a>
+    </div>
+  </div>
+</aside>

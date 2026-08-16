@@ -12,6 +12,11 @@ header_pages:
   - socials.md
   - recs.md
 
+# Social links (shown in the sidebar "Elsewhere" box and on /socials/).
+socials:
+  - { name: YouTube, url: "https://youtube.com/@7op3" }
+  - { name: Twitter / X, url: "https://twitter.com/autisticrobots" }
+
 plugins:
   - jekyll-seo-tag
   - jekyll-feed

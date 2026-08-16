@@ -2,10 +2,16 @@
 layout: default
 ---
 
-<div class="panel">
-  <h1 class="page-heading">{{ page.title | escape }}</h1>
+<div class="layout-grid">
+  <div class="panel">
+    <div class="box-header">
+      <h1 class="page-heading">{{ page.title | escape }}</h1>
+    </div>
 
-  <div class="page-content">
-    {{ content }}
+    <div class="panel-content">
+      {{ content }}
+    </div>
   </div>
+
+  {%- include sidebar.html -%}
 </div>
