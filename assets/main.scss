@@ -2,119 +2,472 @@
 # Front matter (the dashes) tells Jekyll to process this Sass file.
 ---
 
-@import "minima";
+// ---- Web 2.0 (2007–2010) gloss theme ----
 
-// ---- Theme toggle button ----
-.theme-toggle {
-  float: right;
-  margin: 8px 0 0 18px;
-  padding: 0;
-  width: 36px;
-  height: 36px;
-  line-height: 34px;
-  font-size: 18px;
-  text-align: center;
-  cursor: pointer;
-  background: transparent;
-  border: 1px solid $grey-color-light;
-  border-radius: 50%;
-  color: inherit;
+// Light theme
+$light-bg:        #eef3f9;
+$light-panel:     #ffffff;
+$light-text:      #333333;
+$light-muted:     #7a8696;
+$light-link:      #0b5ed7;
+$light-link-hover:#b30000;
+$light-border:    #b7c0cc;
 
-  &:hover { border-color: $grey-color; }
+// Dark theme
+$dark-bg:         #0e1520;
+$dark-panel:      #17202e;
+$dark-text:       #dde4ee;
+$dark-muted:      #8b98ab;
+$dark-link:       #7cb0ff;
+$dark-link-hover: #ff8a8a;
+$dark-border:     #2a3850;
+
+$header-grad-light: linear-gradient(to bottom, #86c5f4 0%, #5a9fe0 45%, #4a8fd6 55%, #6fb1ec 100%);
+$header-grad-dark:  linear-gradient(to bottom, #3d66ac 0%, #2d4f8f 45%, #27467f 55%, #345795 100%);
+$bar-grad-light:    linear-gradient(to bottom, #9fb4c8 0%, #8ba3ba 45%, #7e96ad 55%, #93aabe 100%);
+$bar-grad-dark:     linear-gradient(to bottom, #5d6d82 0%, #4d5d71 45%, #46566a 55%, #55657a 100%);
+$btn-grad-light:    linear-gradient(to bottom, #86c5f4 0%, #5a9fe0 45%, #4a8fd6 55%, #6fb1ec 100%);
+$btn-grad-dark:     linear-gradient(to bottom, #3a6cb8 0%, #2c5496 100%);
+
+$font-stack: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+// ---- Base ----
+
+* { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-@include media-query($on-palm) {
-  .theme-toggle {
-    position: absolute;
-    top: 9px;
-    right: 55px;
-    margin: 0;
+body {
+  margin: 0;
+  font-family: $font-stack;
+  font-size: 15px;
+  line-height: 1.6;
+  color: $light-text;
+  background-color: $light-bg;
+  background-image:
+    radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, #f5f8fc 0%, $light-bg 260px);
+  background-size: 18px 18px, auto;
+  background-repeat: repeat, no-repeat;
+}
+
+a {
+  color: $light-link;
+  text-decoration: underline;
+
+  &:hover { color: $light-link-hover; text-decoration: underline; }
+  &:visited { color: $light-link; }
+}
+
+.wrapper {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// ---- Header ----
+
+.site-header {
+  background: $header-grad-light;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 12px 0;
+}
+
+.site-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+
+  &:visited { color: #fff; }
+  &:hover { color: #fff; text-decoration: none; }
+}
+
+.site-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.page-link {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  border-radius: 14px;
+
+  &:visited { color: #fff; }
+
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.22);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
   }
 }
 
-// ---- Footer ----
-.footer-description {
-  margin: 0;
-  color: $grey-color;
-  @include relative-font-size(0.9375);
+.theme-toggle {
+  margin-left: 12px;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  line-height: 30px;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  background: $btn-grad-light;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  &:hover { filter: brightness(1.08); }
 }
+
+// ---- Layout ----
+
+.page-content {
+  padding: 24px 0 40px;
+}
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 20px;
+  align-items: start;
+}
+
+// ---- Content boxes ----
+
+.panel {
+  background-color: $light-panel;
+  border: 1px solid $light-border;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.box-header {
+  padding: 9px 20px;
+  background: $bar-grad-light;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.page-heading {
+  margin: 0;
+  font-size: 19px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.panel-content {
+  padding: 20px 24px 24px;
+}
+
+// ---- Home ----
+
+.home-intro {
+  padding: 20px 24px 24px;
+}
+
+.home-intro h1 {
+  margin: -20px -24px 16px;
+  padding: 9px 24px;
+  font-size: 19px;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  background: $bar-grad-light;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.home-intro h2 {
+  font-size: 16px;
+  color: #1c2b3a;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.home-intro p { margin: 0 0 12px; }
+.home-intro p:last-child { margin-bottom: 0; }
+
+// ---- Sidebar widgets ----
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.widget {
+  background-color: $light-panel;
+  border: 1px solid $light-border;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 5px rgba(0, 0, 0, 0.12);
+}
+
+.widget-title {
+  margin: 0;
+  padding: 7px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  background: $bar-grad-light;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.widget-body {
+  padding: 12px 14px;
+  font-size: 13.5px;
+}
+
+.widget-body p { margin: 0 0 8px; }
+.widget-body p:last-child { margin-bottom: 0; }
+
+.widget-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li { margin: 0 0 6px; }
+  li:last-child { margin-bottom: 0; }
+
+  li::before {
+    content: "» ";
+    color: $light-muted;
+  }
+}
+
+.subscribe-text { color: $light-muted; }
+
+.rss-button {
+  display: inline-block;
+  padding: 5px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+  text-decoration: none;
+  background: linear-gradient(to bottom, #ffa04d 0%, #f26c10 45%, #e35f06 55%, #f8822e 100%);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+    filter: brightness(1.06);
+  }
+  &:visited { color: #fff; }
+}
+
+// ---- Footer ----
+
+.site-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.4);
+  padding: 14px 0;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+
+.footer-copy,
+.footer-stamp {
+  margin: 0;
+  font-size: 13px;
+  color: $light-muted;
+}
+
+.rss-link {
+  font-weight: bold;
+  color: #ff6600;
+
+  &:hover { color: #cc5200; }
+  &:visited { color: #ff6600; }
+}
+
+// ---- Misc content styles ----
+
+h2 {
+  color: #1c2b3a;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+blockquote {
+  margin: 16px 0;
+  padding: 4px 16px;
+  color: $light-muted;
+  border-left: 4px solid $light-border;
+}
+
+pre, code {
+  font-family: Menlo, Consolas, Monaco, "Courier New", monospace;
+  font-size: 13px;
+  background-color: #f4f6f9;
+  border: 1px solid $light-border;
+  border-radius: 4px;
+}
+
+code { padding: 1px 5px; }
+
+pre {
+  padding: 10px 14px;
+  overflow-x: auto;
+
+  code { padding: 0; border: none; background: none; }
+}
+
+table {
+  margin: 16px 0;
+  border-collapse: collapse;
+  color: $light-text;
+
+  th, td { padding: 6px 12px; border: 1px solid $light-border; }
+  th { background-color: #eef3f9; }
+}
+
+img { max-width: 100%; border-radius: 6px; }
 
 // ---- Dark theme ----
-$dark-bg:        #121212;
-$dark-surface:   #1e1e1e;
-$dark-text:      #e6e6e6;
-$dark-muted:     #9aa0a6;
-$dark-link:      #7cb0ff;
-$dark-border:    #333;
-
-html {
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
 
 [data-theme="dark"] {
   background-color: $dark-bg;
 
   body {
     background-color: $dark-bg;
+    background-image:
+      radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, #131c2b 0%, $dark-bg 260px);
+    background-size: 18px 18px, auto;
+    background-repeat: repeat, no-repeat;
     color: $dark-text;
   }
 
-  a { color: $dark-link; }
-  a:visited { color: $dark-link; }
-  a:hover { color: lighten($dark-link, 10%); }
-
-  .site-header {
-    background-color: $dark-bg;
-    border-top-color: $dark-link;
-    border-bottom-color: $dark-border;
+  a {
+    color: $dark-link;
+    &:hover { color: $dark-link-hover; }
+    &:visited { color: $dark-link; }
   }
+
+  .site-header { background: $header-grad-dark; }
+  .theme-toggle { background: $btn-grad-dark; }
 
   .site-title,
-  .site-title:visited { color: $dark-text; }
-
-  .site-nav {
-    .page-link { color: $dark-text; }
-
-    @include media-query($on-palm) {
-      background-color: $dark-surface;
-      border-color: $dark-border;
-
-      .menu-icon > svg { fill: $dark-text; }
-    }
+  .site-title:visited,
+  .site-title:hover {
+    color: #fff;
   }
 
-  .theme-toggle {
+  .page-link,
+  .page-link:visited,
+  .page-link:hover {
+    color: #fff;
+  }
+
+  .rss-button,
+  .rss-button:hover,
+  .rss-button:visited {
+    color: #fff;
+  }
+
+  .panel {
+    background-color: $dark-panel;
     border-color: $dark-border;
-    &:hover { border-color: $dark-muted; }
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.4);
   }
+
+  .box-header {
+    background: $bar-grad-dark;
+    border-bottom-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .page-heading { color: #fff; }
+
+  .home-intro h1 {
+    background: $bar-grad-dark;
+    border-bottom-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+  }
+
+  .home-intro h2,
+  h2 {
+    color: #e4ebf5;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  }
+
+  .widget {
+    background-color: $dark-panel;
+    border-color: $dark-border;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.6), 0 2px 5px rgba(0, 0, 0, 0.35);
+  }
+
+  .widget-title {
+    background: $bar-grad-dark;
+    border-bottom-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .widget-list li::before { color: $dark-muted; }
+  .subscribe-text { color: $dark-muted; }
 
   .site-footer {
-    background-color: $dark-bg;
+    background: rgba(255, 255, 255, 0.03);
     border-top-color: $dark-border;
   }
 
-  .footer-description { color: $dark-muted; }
+  .footer-copy,
+  .footer-stamp { color: $dark-muted; }
 
   blockquote {
     color: $dark-muted;
     border-left-color: $dark-border;
   }
 
-  pre,
-  code {
-    background-color: $dark-surface;
+  pre, code {
+    background-color: #0d1420;
     border-color: $dark-border;
   }
-
-  .highlight,
-  .highlighter-rouge .highlight { background: $dark-surface; }
 
   table {
     color: $dark-text;
-    border-color: $dark-border;
 
     th, td { border-color: $dark-border; }
-    th { background-color: lighten($dark-surface, 6%); }
-    tr:nth-child(even) { background-color: lighten($dark-surface, 3%); }
+    th { background-color: lighten($dark-panel, 6%); }
   }
+}
+
+// ---- Responsive ----
+
+@media (max-width: 700px) {
+  .layout-grid { grid-template-columns: minmax(0, 1fr); }
+  .header-bar { gap: 8px; }
+  .site-title { font-size: 20px; }
+  .site-nav { margin-left: 0; width: 100%; }
+  .page-link { padding: 3px 10px; }
+  .theme-toggle { margin-left: auto; }
+  .footer-row { flex-direction: column; gap: 2px; }
 }

@@ -3,10 +3,10 @@ name: testing-site
 description: Build, serve, and test the Jekyll (minima) personal site end-to-end. Use when verifying page rendering, nav, or link changes on 7op3.github.io (seven.is-a.dev).
 ---
 
-# Testing the personal site (Jekyll + minima)
+# Testing the personal site (Jekyll, custom layout)
 
-Static site built with Jekyll and the `minima` theme, hosted on GitHub Pages
-(CNAME `seven.is-a.dev`). Content lives as Markdown at the repo root
+Static site built with Jekyll with a custom hand-rolled layout (Web 2.0 gloss,
+2007–2010 era) — no theme gem. Content lives as Markdown at the repo root
 (`index.md`, `socials.md`, `recs.md`); nav order is set by `header_pages` in
 `_config.yml`.
 
@@ -39,11 +39,12 @@ to confirm it's up.
 
 ## What to verify (golden path)
 
-- **Home `/`**: minima styling applied (site title top-left, nav top-right),
-  not bare unstyled HTML. Tab title `Home | Seven`.
+- **Home `/`**: Web 2.0 styling applied (glossy gradient header top, nav pills
+  top-right, white rounded content panel), not bare unstyled HTML. Tab title
+  `Home | Seven`.
 - **Nav + pages**: `/socials/` and `/recs/` load with their headings.
 - **External links** on `/socials/`: check hrefs in the DOM, not just text —
-  YouTube `https://youtube.com/@7op3`, Twitter `https://twitter.com/autisticrobots`.
+  YouTube `https://youtube.com/@7op3`, Twitter `https://twitter.com/shockhorrors`.
 - **Images**: `/recs/` embeds `imgs/whoag.png`; confirm it renders (not a broken
   icon).
 - Use the annotated DOM from the browser tool to read `href`/`src` attributes
