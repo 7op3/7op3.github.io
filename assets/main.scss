@@ -2,7 +2,7 @@
 # Front matter (the dashes) tells Jekyll to process this Sass file.
 ---
 
-// ---- Web 2.0 (2007–2010) gloss theme ----
+// ---- Web 2.0 (2007–2010) gloss theme, tactile edition ----
 
 // Light theme
 $light-bg:        #eef3f9;
@@ -26,8 +26,6 @@ $header-grad-light: linear-gradient(to bottom, #86c5f4 0%, #5a9fe0 45%, #4a8fd6 
 $header-grad-dark:  linear-gradient(to bottom, #3d66ac 0%, #2d4f8f 45%, #27467f 55%, #345795 100%);
 $bar-grad-light:    linear-gradient(to bottom, #9fb4c8 0%, #8ba3ba 45%, #7e96ad 55%, #93aabe 100%);
 $bar-grad-dark:     linear-gradient(to bottom, #5d6d82 0%, #4d5d71 45%, #46566a 55%, #55657a 100%);
-$btn-grad-light:    linear-gradient(to bottom, #86c5f4 0%, #5a9fe0 45%, #4a8fd6 55%, #6fb1ec 100%);
-$btn-grad-dark:     linear-gradient(to bottom, #3a6cb8 0%, #2c5496 100%);
 
 $font-stack: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 
@@ -47,11 +45,8 @@ body {
   line-height: 1.6;
   color: $light-text;
   background-color: $light-bg;
-  background-image:
-    radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, #f5f8fc 0%, $light-bg 260px);
-  background-size: 18px 18px, auto;
-  background-repeat: repeat, no-repeat;
+  background-image: linear-gradient(to bottom, #f5f8fc 0%, $light-bg 260px);
+  background-repeat: no-repeat;
 }
 
 a {
@@ -118,25 +113,37 @@ a {
     background: rgba(255, 255, 255, 0.22);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
   }
+
+  &:active,
+  &.current {
+    background: rgba(0, 0, 0, 0.18);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
+    transform: translateY(1px);
+  }
 }
 
 .theme-toggle {
   margin-left: 12px;
   padding: 0;
-  width: 32px;
-  height: 32px;
-  line-height: 30px;
+  width: 34px;
+  height: 34px;
+  line-height: 32px;
   font-size: 16px;
   text-align: center;
   cursor: pointer;
   color: #fff;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-  background: $btn-grad-light;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(to bottom, #86c5f4 0%, #5a9fe0 45%, #4a8fd6 55%, #6fb1ec 100%);
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 50%;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 1px 3px rgba(0, 0, 0, 0.3);
 
   &:hover { filter: brightness(1.08); }
+
+  &:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
 }
 
 // ---- Layout ----
@@ -174,7 +181,7 @@ a {
   font-size: 19px;
   font-weight: bold;
   color: #fff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3), 0 -1px 1px rgba(0, 0, 0, 0.4);
 }
 
 .panel-content {
@@ -192,7 +199,7 @@ a {
   padding: 9px 24px;
   font-size: 19px;
   color: #fff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3), 0 -1px 1px rgba(0, 0, 0, 0.4);
   background: $bar-grad-light;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
@@ -201,7 +208,7 @@ a {
 .home-intro h2 {
   font-size: 16px;
   color: #1c2b3a;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.15);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85), 0 1px 2px rgba(0, 0, 0, 0.18);
 }
 
 .home-intro p { margin: 0 0 12px; }
@@ -229,7 +236,7 @@ a {
   font-size: 14px;
   font-weight: bold;
   color: #fff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3), 0 -1px 1px rgba(0, 0, 0, 0.4);
   background: $bar-grad-light;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
@@ -272,10 +279,17 @@ a {
   border-radius: 6px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
 
+  &:visited { color: #fff; }
+
   &:hover {
     color: #fff;
     text-decoration: none;
     filter: brightness(1.06);
+  }
+
+  &:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.35);
   }
   &:visited { color: #fff; }
 }
@@ -315,7 +329,7 @@ a {
 
 h2 {
   color: #1c2b3a;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.15);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85), 0 1px 2px rgba(0, 0, 0, 0.18);
 }
 
 blockquote {
@@ -360,11 +374,8 @@ img { max-width: 100%; border-radius: 6px; }
 
   body {
     background-color: $dark-bg;
-    background-image:
-      radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, #131c2b 0%, $dark-bg 260px);
-    background-size: 18px 18px, auto;
-    background-repeat: repeat, no-repeat;
+    background-image: linear-gradient(to bottom, #131c2b 0%, $dark-bg 260px);
+    background-repeat: no-repeat;
     color: $dark-text;
   }
 
@@ -375,7 +386,6 @@ img { max-width: 100%; border-radius: 6px; }
   }
 
   .site-header { background: $header-grad-dark; }
-  .theme-toggle { background: $btn-grad-dark; }
 
   .site-title,
   .site-title:visited,
@@ -395,6 +405,11 @@ img { max-width: 100%; border-radius: 6px; }
     color: #fff;
   }
 
+  .theme-toggle {
+    background: linear-gradient(to bottom, #4a77c0 0%, #3560a8 45%, #2c5496 55%, #3d6cb0 100%);
+    border-color: rgba(0, 0, 0, 0.5);
+  }
+
   .panel {
     background-color: $dark-panel;
     border-color: $dark-border;
@@ -406,12 +421,16 @@ img { max-width: 100%; border-radius: 6px; }
     border-bottom-color: rgba(0, 0, 0, 0.4);
   }
 
-  .page-heading { color: #fff; }
+  .page-heading {
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6), 0 -1px 0 rgba(255, 255, 255, 0.08);
+  }
 
   .home-intro h1 {
     background: $bar-grad-dark;
     border-bottom-color: rgba(0, 0, 0, 0.4);
     color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6), 0 -1px 0 rgba(255, 255, 255, 0.08);
   }
 
   .home-intro h2,
@@ -429,6 +448,7 @@ img { max-width: 100%; border-radius: 6px; }
   .widget-title {
     background: $bar-grad-dark;
     border-bottom-color: rgba(0, 0, 0, 0.4);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6), 0 -1px 0 rgba(255, 255, 255, 0.08);
   }
 
   .widget-list li::before { color: $dark-muted; }
@@ -464,10 +484,14 @@ img { max-width: 100%; border-radius: 6px; }
 
 @media (max-width: 700px) {
   .layout-grid { grid-template-columns: minmax(0, 1fr); }
-  .header-bar { gap: 8px; }
-  .site-title { font-size: 20px; }
-  .site-nav { margin-left: 0; width: 100%; }
-  .page-link { padding: 3px 10px; }
-  .theme-toggle { margin-left: auto; }
+  .header-bar { gap: 6px; }
+  .site-title { font-size: 18px; padding: 3px 10px; }
+  .site-nav { gap: 4px; }
+  .page-link { padding: 3px 8px; font-size: 13px; }
+  .theme-toggle { margin-left: 8px; width: 28px; height: 28px; line-height: 26px; font-size: 14px; }
   .footer-row { flex-direction: column; gap: 2px; }
+}
+
+@media (max-width: 420px) {
+  .site-nav { margin-left: 0; }
 }

@@ -1,7 +1,8 @@
 # seven.is-a.dev
 
 My personal website, built with [Jekyll](https://jekyllrb.com/) with a custom
-hand-rolled layout (Web 2.0 gloss, 2007–2010 era), hosted on GitHub Pages.
+hand-rolled layout (brushed metal + glass skeuomorphic theme), hosted on GitHub
+Pages.
 
 Quick warning, this site has been made with the assistance of ai, so there are probable errors and the like.
 

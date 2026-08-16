@@ -1,14 +1,14 @@
 ---
 name: testing-site
-description: Build, serve, and test the Jekyll (minima) personal site end-to-end. Use when verifying page rendering, nav, or link changes on 7op3.github.io (seven.is-a.dev).
+description: Build, serve, and test the Jekyll personal site end-to-end. Use when verifying page rendering, nav, or link changes on 7op3.github.io (seven.is-a.dev).
 ---
 
 # Testing the personal site (Jekyll, custom layout)
 
-Static site built with Jekyll with a custom hand-rolled layout (Web 2.0 gloss,
-2007–2010 era) — no theme gem. Content lives as Markdown at the repo root
-(`index.md`, `socials.md`, `recs.md`); nav order is set by `header_pages` in
-`_config.yml`.
+Static site built with Jekyll with a custom hand-rolled layout (brushed metal
++ glass skeuomorphic theme) — no theme gem. Content lives as Markdown at the
+repo root (`index.md`, `socials.md`, `recs.md`); nav order is set by
+`header_pages` in `_config.yml`.
 
 ## Setup / local run
 
@@ -39,9 +39,10 @@ to confirm it's up.
 
 ## What to verify (golden path)
 
-- **Home `/`**: Web 2.0 styling applied (glossy gradient header top, nav pills
-  top-right, white rounded content panel), not bare unstyled HTML. Tab title
-  `Home | Seven`.
+- **Home `/`**: skeuomorphic styling applied (brushed metal header bar, glass
+  panels, sidebar with About/Elsewhere/Subscribe widgets), not bare unstyled
+  HTML. Tab title `Home | Seven`.
+  not bare unstyled HTML. Tab title `Home | Seven`.
 - **Nav + pages**: `/socials/` and `/recs/` load with their headings.
 - **External links** on `/socials/`: check hrefs in the DOM, not just text —
   YouTube `https://youtube.com/@7op3`, Twitter `https://twitter.com/shockhorrors`.
