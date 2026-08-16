@@ -15,7 +15,7 @@ header_pages:
 # Social links (shown in the sidebar "Elsewhere" box and on /socials/).
 socials:
   - { name: YouTube, url: "https://youtube.com/@7op3" }
-  - { name: Twitter / X, url: "https://twitter.com/autisticrobots" }
+  - { name: Twitter / X, url: "https://twitter.com/shockhorrors" }
 
 plugins:
   - jekyll-seo-tag

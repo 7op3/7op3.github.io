@@ -44,7 +44,7 @@ to confirm it's up.
   `Home | Seven`.
 - **Nav + pages**: `/socials/` and `/recs/` load with their headings.
 - **External links** on `/socials/`: check hrefs in the DOM, not just text —
-  YouTube `https://youtube.com/@7op3`, Twitter `https://twitter.com/autisticrobots`.
+  YouTube `https://youtube.com/@7op3`, Twitter `https://twitter.com/shockhorrors`.
 - **Images**: `/recs/` embeds `imgs/whoag.png`; confirm it renders (not a broken
   icon).
 - Use the annotated DOM from the browser tool to read `href`/`src` attributes
