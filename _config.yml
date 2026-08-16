@@ -12,10 +12,12 @@ header_pages:
   - socials.md
   - recs.md
 
-# Social links (shown in the sidebar "Elsewhere" box and on /socials/).
+# Social links. The /socials/ page always shows every entry; the sidebar
+# "Elsewhere" box skips any entry flagged `sidebar: false`.
 socials:
   - { name: YouTube, url: "https://youtube.com/@7op3" }
   - { name: Twitter / X, url: "https://twitter.com/shockhorrors" }
+  - { name: Last.fm, url: "https://www.last.fm/user/ropeburns" }
 
 plugins:
   - jekyll-seo-tag

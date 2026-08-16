@@ -11,7 +11,9 @@
     <div class="widget-body">
       <ul class="widget-list">
         {%- for social in site.socials -%}
+          {%- unless social.sidebar == false -%}
         <li><a href="{{ social.url }}" rel="me">{{ social.name | escape }}</a></li>
+          {%- endunless -%}
         {%- endfor -%}
       </ul>
     </div>
