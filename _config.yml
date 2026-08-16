@@ -7,18 +7,17 @@ author: Amelia
 email:
 url: "https://seven.is-a.dev"
 
-theme: minima
-
 # Nav bar order (top right of every page).
 header_pages:
   - socials.md
   - recs.md
 
-# Minima social links (shown in the footer).
-minima:
-  social_links:
-    - { platform: youtube, user_url: "https://youtube.com/@7op3" }
-    - { platform: twitter, user_url: "https://twitter.com/autisticrobots" }
+# Social links. The /socials/ page always shows every entry; the sidebar
+# "Elsewhere" box skips any entry flagged `sidebar: false`.
+socials:
+  - { name: YouTube, url: "https://youtube.com/@7op3" }
+  - { name: Twitter / X, url: "https://twitter.com/shockhorrors" }
+  - { name: Last.fm, url: "https://www.last.fm/user/ropeburns" }
 
 plugins:
   - jekyll-seo-tag

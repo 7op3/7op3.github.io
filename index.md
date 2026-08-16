@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: home
 title: Home
 ---
 
@@ -7,9 +7,10 @@ title: Home
 
 Welcome to my little corner of the internet.
 
-This site is where I collect my [socials](/socials) and a growing list of
-[recommendations](/recs) — sites, tools, and other things I think are worth
-your time.
+## What's here
+
+- [Socials](/socials) — where to find me around the web
+- [Recommendations](/recs) — sites, tools, and other things I think are worth your time
 
 It's still a work in progress, but a much tidier one than before. Thanks for
 stopping by.

@@ -8,6 +8,9 @@ group :jekyll_plugins do
   gem "jekyll-seo-tag"
 end
 
+# Ruby 3.4+ ships erb as a bundled gem; declare it so Jekyll 3.x can load it.
+gem "erb"
+
 # Windows and JRuby do not include zoneinfo files, so bundle the tzinfo-data gem
 # and associated library.
 platforms :mingw, :x64_mingw, :mswin, :jruby do

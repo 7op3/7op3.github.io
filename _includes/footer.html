@@ -1,8 +1,14 @@
-<footer class="site-footer h-card">
-  <data class="u-url" href="{{ "/" | relative_url }}"></data>
-
+<footer class="site-footer">
   <div class="wrapper">
-    <p class="footer-description">{{- site.description | escape -}}</p>
+    <div class="footer-row">
+      <p class="footer-copy">
+        © 2007–{{ site.time | date: "%Y" }} {{ site.author | escape }}
+      </p>
+      <p class="footer-stamp">
+        <a class="rss-link" href="{{ "/feed.xml" | relative_url }}" title="Subscribe to the feed">RSS</a>
+        <span>·</span>
+        <span class="last-updated">last updated {{ site.time | date: "%B %Y" }}</span>
+      </p>
+    </div>
   </div>
-
 </footer>
