@@ -46,10 +46,7 @@
     widget.replaceChildren(row);
   }
 
-  fetch('https://raw.githubusercontent.com/7op3/7op3.github.io/lastfm-data/lastfm.json?time=' + Date.now(), {
-    cache: 'no-store',
-    credentials: 'omit'
-  })
+  fetch('/api/lastfm', { cache: 'no-store', credentials: 'omit' })
     .then(function (response) {
       if (!response.ok) throw new Error('Listening data is unavailable.');
       return response.json();
