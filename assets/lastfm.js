@@ -1,0 +1,67 @@
+(function () {
+  var widget = document.getElementById('lastfm-track');
+  if (!widget) return;
+
+  function textElement(tag, className, text) {
+    var element = document.createElement(tag);
+    element.className = className;
+    element.textContent = text;
+    return element;
+  }
+
+  function showMessage(className, text) {
+    widget.replaceChildren(textElement('p', className, text));
+  }
+
+  function renderTrack(track) {
+    var row = document.createElement('div');
+    row.className = 'listening-track';
+
+    if (track.image) {
+      var art = document.createElement('img');
+      art.className = 'listening-art';
+      art.src = track.image;
+      art.alt = 'Album artwork for ' + (track.album || track.name);
+      art.width = 64;
+      art.height = 64;
+      art.loading = 'lazy';
+      row.appendChild(art);
+    } else {
+      row.appendChild(textElement('div', 'listening-art listening-art-empty', 'LP'));
+    }
+
+    var details = document.createElement('div');
+    details.className = 'listening-details';
+    details.appendChild(textElement('p', 'listening-status', track.nowPlaying ? 'Now playing' : 'Last played'));
+
+    var name = document.createElement('a');
+    name.className = 'listening-name';
+    name.href = track.url || 'https://www.last.fm/user/ropeburns';
+    name.textContent = track.name;
+    details.appendChild(name);
+    details.appendChild(textElement('p', 'listening-artist', track.artist));
+
+    if (track.album) details.appendChild(textElement('p', 'listening-album', track.album));
+    row.appendChild(details);
+    widget.replaceChildren(row);
+  }
+
+  fetch('https://raw.githubusercontent.com/7op3/7op3.github.io/lastfm-data/lastfm.json?time=' + Date.now(), {
+    cache: 'no-store',
+    credentials: 'omit'
+  })
+    .then(function (response) {
+      if (!response.ok) throw new Error('Listening data is unavailable.');
+      return response.json();
+    })
+    .then(function (track) {
+      if (!track.available || !track.name || !track.artist) {
+        showMessage('listening-empty', 'No recent scrobbles to show right now.');
+        return;
+      }
+      renderTrack(track);
+    })
+    .catch(function () {
+      showMessage('listening-empty', 'Listening data is unavailable right now.');
+    });
+})();

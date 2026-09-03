@@ -22,26 +22,9 @@
   <div class="widget listening-widget">
     <h2 class="widget-title">Listening</h2>
     <div class="widget-body">
-      {%- assign listening = site.data.lastfm -%}
-      {%- if listening and listening.available -%}
-        <div class="listening-track">
-          {%- if listening.image != empty -%}
-          <img class="listening-art" src="{{ listening.image | escape }}" alt="Album artwork for {{ listening.album | default: listening.name | escape }}" width="64" height="64" loading="lazy">
-          {%- else -%}
-          <div class="listening-art listening-art-empty" aria-hidden="true">LP</div>
-          {%- endif -%}
-          <div class="listening-details">
-            <p class="listening-status">{%- if listening.nowPlaying -%}Now playing{%- else -%}Last played{%- endif -%}</p>
-            <a class="listening-name" href="{{ listening.url | escape }}">{{ listening.name | escape }}</a>
-            <p class="listening-artist">{{ listening.artist | escape }}</p>
-            {%- if listening.album != empty -%}
-            <p class="listening-album">{{ listening.album | escape }}</p>
-            {%- endif -%}
-          </div>
-        </div>
-      {%- else -%}
-        <p class="listening-empty">No recent scrobbles to show right now.</p>
-      {%- endif -%}
+      <div id="lastfm-track" aria-live="polite">
+        <p class="listening-empty">Loading latest track...</p>
+      </div>
       <a class="listening-profile" href="https://www.last.fm/user/ropeburns">View on Last.fm</a>
     </div>
   </div>

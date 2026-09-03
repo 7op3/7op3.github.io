@@ -3,8 +3,6 @@ name: Build and deploy site
 on:
   push:
     branches: [main]
-  schedule:
-    - cron: "17 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -22,71 +20,6 @@ jobs:
     steps:
       - name: Check out site
         uses: actions/checkout@v4
-
-      - name: Fetch recent Last.fm track
-        env:
-          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
-        run: |
-          node <<'NODE'
-          const fs = require('node:fs');
-
-          const destination = '_data/lastfm.json';
-          fs.mkdirSync('_data', { recursive: true });
-
-          async function write(data) {
-            fs.writeFileSync(destination, `${JSON.stringify(data)}\n`);
-          }
-
-          async function main() {
-            if (!process.env.LASTFM_API_KEY) {
-              await write({ available: false });
-              console.warn('LASTFM_API_KEY is not configured. Building without listening data.');
-              return;
-            }
-
-            const params = new URLSearchParams({
-              method: 'user.getrecenttracks',
-              user: 'ropeburns',
-              api_key: process.env.LASTFM_API_KEY,
-              format: 'json',
-              limit: '1'
-            });
-            const response = await fetch(`https://ws.audioscrobbler.com/2.0/?${params}`);
-
-            if (!response.ok) throw new Error(`Last.fm returned ${response.status}`);
-
-            const payload = await response.json();
-            const tracks = payload.recenttracks?.track;
-            const track = Array.isArray(tracks) ? tracks[0] : tracks;
-            const artist = track?.artist?.['#text'] || track?.artist?.name || '';
-
-            if (!track?.name || !artist) {
-              await write({ available: false });
-              return;
-            }
-
-            const images = Array.isArray(track.image) ? track.image : [];
-            const image = images.find((item) => item.size === 'extralarge' && item['#text'])
-              || images.find((item) => item.size === 'large' && item['#text'])
-              || images.find((item) => item['#text']);
-
-            await write({
-              available: true,
-              nowPlaying: track['@attr']?.nowplaying === 'true',
-              name: track.name,
-              artist,
-              album: track.album?.['#text'] || '',
-              image: image?.['#text'] || '',
-              url: track.url || 'https://www.last.fm/user/ropeburns',
-              timestamp: track.date?.uts || ''
-            });
-          }
-
-          main().catch(async (error) => {
-            await write({ available: false });
-            console.warn(`Could not fetch Last.fm data: ${error.message}`);
-          });
-          NODE
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
