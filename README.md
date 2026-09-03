@@ -28,3 +28,10 @@ bundle exec jekyll serve
 ```
 
 Then open <http://localhost:4000>.
+
+## Last.fm widget
+
+The sidebar listening widget is populated during the GitHub Actions deployment.
+Create a Last.fm API application, add its key as the `LASTFM_API_KEY` repository
+Actions secret, and set GitHub Pages to deploy from **GitHub Actions**. The
+workflow refreshes listening data hourly without committing it to the site.

@@ -1,0 +1,111 @@
+name: Build and deploy site
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+
+      - name: Fetch recent Last.fm track
+        env:
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+
+          const destination = '_data/lastfm.json';
+          fs.mkdirSync('_data', { recursive: true });
+
+          async function write(data) {
+            fs.writeFileSync(destination, `${JSON.stringify(data)}\n`);
+          }
+
+          async function main() {
+            if (!process.env.LASTFM_API_KEY) {
+              await write({ available: false });
+              console.warn('LASTFM_API_KEY is not configured. Building without listening data.');
+              return;
+            }
+
+            const params = new URLSearchParams({
+              method: 'user.getrecenttracks',
+              user: 'ropeburns',
+              api_key: process.env.LASTFM_API_KEY,
+              format: 'json',
+              limit: '1'
+            });
+            const response = await fetch(`https://ws.audioscrobbler.com/2.0/?${params}`);
+
+            if (!response.ok) throw new Error(`Last.fm returned ${response.status}`);
+
+            const payload = await response.json();
+            const track = payload.recenttracks?.track;
+            if (!track) {
+              await write({ available: false });
+              return;
+            }
+
+            const images = Array.isArray(track.image) ? track.image : [];
+            const image = images.find((item) => item.size === 'extralarge' && item['#text'])
+              || images.find((item) => item.size === 'large' && item['#text'])
+              || images.find((item) => item['#text']);
+
+            await write({
+              available: true,
+              nowPlaying: track['@attr']?.nowplaying === 'true',
+              name: track.name || '',
+              artist: track.artist?.['#text'] || track.artist?.name || '',
+              album: track.album?.['#text'] || '',
+              image: image?.['#text'] || '',
+              url: track.url || 'https://www.last.fm/user/ropeburns',
+              timestamp: track.date?.uts || ''
+            });
+          }
+
+          main().catch(async (error) => {
+            await write({ available: false });
+            console.warn(`Could not fetch Last.fm data: ${error.message}`);
+          });
+          NODE
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
