@@ -1,3 +1,4 @@
 name = "lastfm-proxy"
 main = "src/index.js"
 compatibility_date = "2026-08-20"
+route = "seven.oops.wtf/api/lastfm"
