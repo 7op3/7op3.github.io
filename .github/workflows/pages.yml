@@ -56,8 +56,11 @@ jobs:
             if (!response.ok) throw new Error(`Last.fm returned ${response.status}`);
 
             const payload = await response.json();
-            const track = payload.recenttracks?.track;
-            if (!track) {
+            const tracks = payload.recenttracks?.track;
+            const track = Array.isArray(tracks) ? tracks[0] : tracks;
+            const artist = track?.artist?.['#text'] || track?.artist?.name || '';
+
+            if (!track?.name || !artist) {
               await write({ available: false });
               return;
             }
@@ -70,8 +73,8 @@ jobs:
             await write({
               available: true,
               nowPlaying: track['@attr']?.nowplaying === 'true',
-              name: track.name || '',
-              artist: track.artist?.['#text'] || track.artist?.name || '',
+              name: track.name,
+              artist,
               album: track.album?.['#text'] || '',
               image: image?.['#text'] || '',
               url: track.url || 'https://www.last.fm/user/ropeburns',
