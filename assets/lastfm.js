@@ -46,7 +46,7 @@
     widget.replaceChildren(row);
   }
 
-  fetch('/api/lastfm', { cache: 'no-store', credentials: 'omit' })
+  fetch('https://lastfm-proxy.unkwngly28.workers.dev/api/lastfm', { cache: 'no-store', credentials: 'omit' })
     .then(function (response) {
       if (!response.ok) throw new Error('Listening data is unavailable.');
       return response.json();
