@@ -46,19 +46,24 @@
     widget.replaceChildren(row);
   }
 
-  fetch('https://lastfm-proxy.unkwngly28.workers.dev/api/lastfm', { cache: 'no-store', credentials: 'omit' })
-    .then(function (response) {
-      if (!response.ok) throw new Error('Listening data is unavailable.');
-      return response.json();
-    })
-    .then(function (track) {
-      if (!track.available || !track.name || !track.artist) {
-        showMessage('listening-empty', 'No recent scrobbles to show right now.');
-        return;
-      }
-      renderTrack(track);
-    })
-    .catch(function () {
-      showMessage('listening-empty', 'Listening data is unavailable right now.');
-    });
+  function fetchTrack() {
+    fetch('https://lastfm-proxy.unkwngly28.workers.dev/api/lastfm', { cache: 'no-store', credentials: 'omit' })
+      .then(function (response) {
+        if (!response.ok) throw new Error('Listening data is unavailable.');
+        return response.json();
+      })
+      .then(function (track) {
+        if (!track.available || !track.name || !track.artist) {
+          showMessage('listening-empty', 'No recent scrobbles to show right now.');
+          return;
+        }
+        renderTrack(track);
+      })
+      .catch(function () {
+        showMessage('listening-empty', 'Listening data is unavailable right now.');
+      });
+  }
+
+  fetchTrack();
+  setInterval(fetchTrack, 30000);
 })();
