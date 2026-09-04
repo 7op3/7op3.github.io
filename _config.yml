@@ -11,6 +11,7 @@ url: "https://seven.oops.wtf"
 header_pages:
   - socials.md
   - recs.md
+  - anilist.md
 
 # Social links. The /socials/ page always shows every entry; the sidebar
 # "Elsewhere" box skips any entry flagged `sidebar: false`.
