@@ -29,3 +29,9 @@ exclude:
   - Gemfile.lock
   - README.md
   - vendor
+  - src
+  - wrangler.toml
+  - wrangler.worker.toml
+  - node_modules
+  - package.json
+  - package-lock.json
