@@ -1,0 +1,102 @@
+name: Update AniList data
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "anilist-data"
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Fetch AniList data and update _data/anilist.json
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const user = 'warps';
+            const query = `{
+              anime: MediaListCollection(userName: "${user}", type: ANIME, status_in: [CURRENT, COMPLETED, PAUSED, DROPPED, REPEATING]) {
+                lists {
+                  name
+                  entries {
+                    status
+                    progress
+                    score
+                    startedAt { year month day }
+                    completedAt { year month day }
+                    media {
+                      id
+                      title { romaji english native }
+                      status
+                      episodes
+                      chapters
+                      description
+                      coverImage { large }
+                      genres
+                      averageScore
+                      trending
+                    }
+                  }
+                }
+              }
+              manga: MediaListCollection(userName: "${user}", type: MANGA, status_in: [CURRENT, COMPLETED, PAUSED, DROPPED, REPEATING]) {
+                lists {
+                  name
+                  entries {
+                    status
+                    progress
+                    score
+                    startedAt { year month day }
+                    completedAt { year month day }
+                    media {
+                      id
+                      title { romaji english native }
+                      status
+                      episodes
+                      chapters
+                      description
+                      coverImage { large }
+                      genres
+                      averageScore
+                      trending
+                    }
+                  }
+                }
+              }
+            }`;
+
+            const response = await fetch('https://graphql.anilist.co', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ query })
+            });
+
+            if (!response.ok) {
+              throw new Error('AniList API returned ' + response.status);
+            }
+
+            const data = await response.json();
+            if (data.errors) {
+              throw new Error('AniList GraphQL error: ' + JSON.stringify(data.errors));
+            }
+
+            fs.writeFileSync('_data/anilist.json', JSON.stringify(data, null, 2) + '\n');
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add _data/anilist.json
+          git commit -m "Update AniList data" || true
+          git push
