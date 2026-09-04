@@ -31,8 +31,6 @@ Then open <http://localhost:4000>.
 
 ## Last.fm widget
 
-The `update-lastfm.yml` GitHub Actions workflow retrieves the current or most
-recent track every five minutes. Add a Last.fm API key as the `LASTFM_API_KEY`
-repository Actions secret. The workflow publishes public track metadata to the
-`lastfm-data` branch; the sidebar loads that data when a visitor opens a page,
-without rebuilding or redeploying the site.
+A Cloudflare Worker proxies the Last.fm API at `/api/lastfm`. The sidebar
+loads track data client-side via that endpoint. Add your Last.fm API key as
+the `LASTFM_API_KEY` Worker secret in the Cloudflare dashboard.
