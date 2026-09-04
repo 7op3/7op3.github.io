@@ -1,6 +1,7 @@
 (function () {
   var widget = document.getElementById('lastfm-track');
-  if (!widget) return;
+  if (!widget) { console.log('lastfm: widget not found'); return; }
+  console.log('lastfm: widget found, fetching');
 
   function textElement(tag, className, text) {
     var element = document.createElement(tag);
@@ -48,17 +49,20 @@
 
   fetch('https://lastfm-proxy.unkwngly28.workers.dev/api/lastfm', { cache: 'no-store', credentials: 'omit' })
     .then(function (response) {
+      console.log('lastfm: response status', response.status);
       if (!response.ok) throw new Error('Listening data is unavailable.');
       return response.json();
     })
     .then(function (track) {
+      console.log('lastfm: track data', track);
       if (!track.available || !track.name || !track.artist) {
         showMessage('listening-empty', 'No recent scrobbles to show right now.');
         return;
       }
       renderTrack(track);
     })
-    .catch(function () {
+    .catch(function (e) {
+      console.log('lastfm: error', e);
       showMessage('listening-empty', 'Listening data is unavailable right now.');
     });
 })();
