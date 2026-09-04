@@ -2,6 +2,8 @@
   var widget = document.getElementById('lastfm-track');
   if (!widget) return;
 
+  var intervalId = null;
+
   function textElement(tag, className, text) {
     var element = document.createElement(tag);
     element.className = className;
@@ -55,9 +57,13 @@
       .then(function (track) {
         if (!track.available || !track.name || !track.artist) {
           showMessage('listening-empty', 'No recent scrobbles to show right now.');
+          if (intervalId) { clearInterval(intervalId); intervalId = null; }
           return;
         }
         renderTrack(track);
+        if (!track.nowPlaying) {
+          if (intervalId) { clearInterval(intervalId); intervalId = null; }
+        }
       })
       .catch(function () {
         showMessage('listening-empty', 'Listening data is unavailable right now.');
@@ -65,5 +71,5 @@
   }
 
   fetchTrack();
-  setInterval(fetchTrack, 30000);
+  intervalId = setInterval(fetchTrack, 30000);
 })();
