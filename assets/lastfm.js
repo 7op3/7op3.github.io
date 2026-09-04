@@ -57,13 +57,11 @@
       .then(function (track) {
         if (!track.available || !track.name || !track.artist) {
           showMessage('listening-empty', 'No recent scrobbles to show right now.');
-          if (intervalId) { clearInterval(intervalId); intervalId = null; }
           return;
         }
         renderTrack(track);
-        if (!track.nowPlaying) {
-          if (intervalId) { clearInterval(intervalId); intervalId = null; }
-        }
+        if (intervalId) clearInterval(intervalId);
+        intervalId = setInterval(fetchTrack, track.nowPlaying ? 30000 : 120000);
       })
       .catch(function () {
         showMessage('listening-empty', 'Listening data is unavailable right now.');
@@ -71,5 +69,4 @@
   }
 
   fetchTrack();
-  intervalId = setInterval(fetchTrack, 30000);
 })();
