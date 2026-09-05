@@ -27,6 +27,7 @@ plugins:
 exclude:
   - Gemfile
   - Gemfile.lock
+  - assets/main.scss
   - README.md
   - vendor
   - src
