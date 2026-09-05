@@ -29,7 +29,6 @@
       if (!btn) return;
       function render() {
         var dark = document.documentElement.getAttribute('data-theme') === 'dark';
-        btn.textContent = dark ? 'Sun' : 'Moon';
         btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
       }
       render();
