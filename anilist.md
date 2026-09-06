@@ -14,13 +14,13 @@ Anime and manga from my AniList profile, organized by status.
   {%- if anime.lists.size == 0 and manga.lists.size == 0 %}
     <p class="anilist-empty">No AniList data available yet. It will update every 6 hours.</p>
   {%- else %}
-    {%- assign completed = anime.lists | where: "name", "Completed" | first %}
-    {%- assign watching = anime.lists | where: "name", "Watching" | first %}
-    {%- assign paused = anime.lists | where: "name", "Paused" | first %}
-    {%- assign dropped = anime.lists | where: "name", "Dropped" | first %}
-    {%- assign reading = manga.lists | where: "name", "Reading" | first %}
-    {%- assign manga_paused = manga.lists | where: "name", "Paused" | first %}
-    {%- assign manga_dropped = manga.lists | where: "name", "Dropped" | first %}
+    {%- assign completed = anime.lists | where_exp: "item", "item.name == 'Completed'" | first %}
+    {%- assign watching = anime.lists | where_exp: "item", "item.name == 'Watching'" | first %}
+    {%- assign paused = anime.lists | where_exp: "item", "item.name == 'Paused'" | first %}
+    {%- assign dropped = anime.lists | where_exp: "item", "item.name == 'Dropped'" | first %}
+    {%- assign reading = manga.lists | where_exp: "item", "item.name == 'Reading'" | first %}
+    {%- assign manga_paused = manga.lists | where_exp: "item", "item.name == 'Paused'" | first %}
+    {%- assign manga_dropped = manga.lists | where_exp: "item", "item.name == 'Dropped'" | first %}
 
     {%- if completed and completed.entries.size > 0 %}
       <h3 class="anilist-section-title">Completed</h3>
