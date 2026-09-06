@@ -101,103 +101,99 @@ Anime and manga from my AniList profile, organized by status.
       </div>
     {%- endif %}
 
-    {%- if paused %}
+    {%- if paused or manga_paused %}
       <h3 class="anilist-section-title">Paused</h3>
       <div class="anilist-list">
-        {%- for entry in paused.entries %}
-          {%- assign m = entry.media %}
-          {%- if m %}
-          <article class="anilist-item">
-            {%- if m.coverImage and m.coverImage.large %}
-              <img class="anilist-item-art" src="{{ m.coverImage.large }}" alt="{{ m.title.romaji | default: m.title.english | default: 'Unknown' }}" width="48" height="48" loading="lazy">
-            {%- else %}
-              <div class="anilist-item-art anilist-item-art-empty">LP</div>
-            {%- endif %}
-            <div class="anilist-item-details">
-              <p class="anilist-item-title"><a href="https://www.anilist.co/media/{{ m.id }}">{{ m.title.romaji | default: m.title.english | default: 'Unknown' }}</a></p>
-              <p class="anilist-item-meta">{{ entry.status | capitalize }}{% if entry.score %} | Score: {{ entry.score }}{% endif %}{% if entry.progress %} | {{ entry.progress }}{% endif %}</p>
-              {%- if m.description %}
-                <p class="anilist-item-desc">{{ m.description | strip_html | truncate: 150 }}</p>
+        {%- if paused %}
+          {%- for entry in paused.entries %}
+            {%- assign m = entry.media %}
+            {%- if m %}
+            <article class="anilist-item">
+              {%- if m.coverImage and m.coverImage.large %}
+                <img class="anilist-item-art" src="{{ m.coverImage.large }}" alt="{{ m.title.romaji | default: m.title.english | default: 'Unknown' }}" width="48" height="48" loading="lazy">
+              {%- else %}
+                <div class="anilist-item-art anilist-item-art-empty">LP</div>
               {%- endif %}
-            </div>
-          </article>
-          {%- endif %}
-        {%- endfor %}
+              <div class="anilist-item-details">
+                <p class="anilist-item-title"><a href="https://www.anilist.co/media/{{ m.id }}">{{ m.title.romaji | default: m.title.english | default: 'Unknown' }}</a></p>
+                <p class="anilist-item-meta">{{ entry.status | capitalize }}{% if entry.score %} | Score: {{ entry.score }}{% endif %}{% if entry.progress %} | {{ entry.progress }}{% endif %}</p>
+                {%- if m.description %}
+                  <p class="anilist-item-desc">{{ m.description | strip_html | truncate: 150 }}</p>
+                {%- endif %}
+              </div>
+            </article>
+            {%- endif %}
+          {%- endfor %}
+        {%- endif %}
+        {%- if manga_paused %}
+          {%- for entry in manga_paused.entries %}
+            {%- assign m = entry.media %}
+            {%- if m %}
+            <article class="anilist-item">
+              {%- if m.coverImage and m.coverImage.large %}
+                <img class="anilist-item-art" src="{{ m.coverImage.large }}" alt="{{ m.title.romaji | default: m.title.english | default: 'Unknown' }}" width="48" height="48" loading="lazy">
+              {%- else %}
+                <div class="anilist-item-art anilist-item-art-empty">LP</div>
+              {%- endif %}
+              <div class="anilist-item-details">
+                <p class="anilist-item-title"><a href="https://www.anilist.co/media/{{ m.id }}">{{ m.title.romaji | default: m.title.english | default: 'Unknown' }}</a></p>
+                <p class="anilist-item-meta">{{ entry.status | capitalize }}{% if entry.score %} | Score: {{ entry.score }}{% endif %}{% if entry.progress %} | {{ entry.progress }}{% endif %}</p>
+                {%- if m.description %}
+                  <p class="anilist-item-desc">{{ m.description | strip_html | truncate: 150 }}</p>
+                {%- endif %}
+              </div>
+            </article>
+            {%- endif %}
+          {%- endfor %}
+        {%- endif %}
       </div>
     {%- endif %}
 
-    {%- if dropped %}
+    {%- if dropped or manga_dropped %}
       <h3 class="anilist-section-title">Dropped</h3>
       <div class="anilist-list">
-        {%- for entry in dropped.entries %}
-          {%- assign m = entry.media %}
-          {%- if m %}
-          <article class="anilist-item">
-            {%- if m.coverImage and m.coverImage.large %}
-              <img class="anilist-item-art" src="{{ m.coverImage.large }}" alt="{{ m.title.romaji | default: m.title.english | default: 'Unknown' }}" width="48" height="48" loading="lazy">
-            {%- else %}
-              <div class="anilist-item-art anilist-item-art-empty">LP</div>
-            {%- endif %}
-            <div class="anilist-item-details">
-              <p class="anilist-item-title"><a href="https://www.anilist.co/media/{{ m.id }}">{{ m.title.romaji | default: m.title.english | default: 'Unknown' }}</a></p>
-              <p class="anilist-item-meta">{{ entry.status | capitalize }}{% if entry.score %} | Score: {{ entry.score }}{% endif %}{% if entry.progress %} | {{ entry.progress }}{% endif %}</p>
-              {%- if m.description %}
-                <p class="anilist-item-desc">{{ m.description | strip_html | truncate: 150 }}</p>
+        {%- if dropped %}
+          {%- for entry in dropped.entries %}
+            {%- assign m = entry.media %}
+            {%- if m %}
+            <article class="anilist-item">
+              {%- if m.coverImage and m.coverImage.large %}
+                <img class="anilist-item-art" src="{{ m.coverImage.large }}" alt="{{ m.title.romaji | default: m.title.english | default: 'Unknown' }}" width="48" height="48" loading="lazy">
+              {%- else %}
+                <div class="anilist-item-art anilist-item-art-empty">LP</div>
               {%- endif %}
-            </div>
-          </article>
-          {%- endif %}
-        {%- endfor %}
-      </div>
-    {%- endif %}
-
-    {%- if manga_paused %}
-      <h3 class="anilist-section-title">Paused</h3>
-      <div class="anilist-list">
-        {%- for entry in manga_paused.entries %}
-          {%- assign m = entry.media %}
-          {%- if m %}
-          <article class="anilist-item">
-            {%- if m.coverImage and m.coverImage.large %}
-              <img class="anilist-item-art" src="{{ m.coverImage.large }}" alt="{{ m.title.romaji | default: m.title.english | default: 'Unknown' }}" width="48" height="48" loading="lazy">
-            {%- else %}
-              <div class="anilist-item-art anilist-item-art-empty">LP</div>
+              <div class="anilist-item-details">
+                <p class="anilist-item-title"><a href="https://www.anilist.co/media/{{ m.id }}">{{ m.title.romaji | default: m.title.english | default: 'Unknown' }}</a></p>
+                <p class="anilist-item-meta">{{ entry.status | capitalize }}{% if entry.score %} | Score: {{ entry.score }}{% endif %}{% if entry.progress %} | {{ entry.progress }}{% endif %}</p>
+                {%- if m.description %}
+                  <p class="anilist-item-desc">{{ m.description | strip_html | truncate: 150 }}</p>
+                {%- endif %}
+              </div>
+            </article>
             {%- endif %}
-            <div class="anilist-item-details">
-              <p class="anilist-item-title"><a href="https://www.anilist.co/media/{{ m.id }}">{{ m.title.romaji | default: m.title.english | default: 'Unknown' }}</a></p>
-              <p class="anilist-item-meta">{{ entry.status | capitalize }}{% if entry.score %} | Score: {{ entry.score }}{% endif %}{% if entry.progress %} | {{ entry.progress }}{% endif %}</p>
-              {%- if m.description %}
-                <p class="anilist-item-desc">{{ m.description | strip_html | truncate: 150 }}</p>
+          {%- endfor %}
+        {%- endif %}
+        {%- if manga_dropped %}
+          {%- for entry in manga_dropped.entries %}
+            {%- assign m = entry.media %}
+            {%- if m %}
+            <article class="anilist-item">
+              {%- if m.coverImage and m.coverImage.large %}
+                <img class="anilist-item-art" src="{{ m.coverImage.large }}" alt="{{ m.title.romaji | default: m.title.english | default: 'Unknown' }}" width="48" height="48" loading="lazy">
+              {%- else %}
+                <div class="anilist-item-art anilist-item-art-empty">LP</div>
               {%- endif %}
-            </div>
-          </article>
-          {%- endif %}
-        {%- endfor %}
-      </div>
-    {%- endif %}
-
-    {%- if manga_dropped %}
-      <h3 class="anilist-section-title">Dropped</h3>
-      <div class="anilist-list">
-        {%- for entry in manga_dropped.entries %}
-          {%- assign m = entry.media %}
-          {%- if m %}
-          <article class="anilist-item">
-            {%- if m.coverImage and m.coverImage.large %}
-              <img class="anilist-item-art" src="{{ m.coverImage.large }}" alt="{{ m.title.romaji | default: m.title.english | default: 'Unknown' }}" width="48" height="48" loading="lazy">
-            {%- else %}
-              <div class="anilist-item-art anilist-item-art-empty">LP</div>
+              <div class="anilist-item-details">
+                <p class="anilist-item-title"><a href="https://www.anilist.co/media/{{ m.id }}">{{ m.title.romaji | default: m.title.english | default: 'Unknown' }}</a></p>
+                <p class="anilist-item-meta">{{ entry.status | capitalize }}{% if entry.score %} | Score: {{ entry.score }}{% endif %}{% if entry.progress %} | {{ entry.progress }}{% endif %}</p>
+                {%- if m.description %}
+                  <p class="anilist-item-desc">{{ m.description | strip_html | truncate: 150 }}</p>
+                {%- endif %}
+              </div>
+            </article>
             {%- endif %}
-            <div class="anilist-item-details">
-              <p class="anilist-item-title"><a href="https://www.anilist.co/media/{{ m.id }}">{{ m.title.romaji | default: m.title.english | default: 'Unknown' }}</a></p>
-              <p class="anilist-item-meta">{{ entry.status | capitalize }}{% if entry.score %} | Score: {{ entry.score }}{% endif %}{% if entry.progress %} | {{ entry.progress }}{% endif %}</p>
-              {%- if m.description %}
-                <p class="anilist-item-desc">{{ m.description | strip_html | truncate: 150 }}</p>
-              {%- endif %}
-            </div>
-          </article>
-          {%- endif %}
-        {%- endfor %}
+          {%- endfor %}
+        {%- endif %}
       </div>
     {%- endif %}
   {%- endif %}
