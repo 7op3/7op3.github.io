@@ -7,7 +7,7 @@ permalink: /anilist/
 Anime and manga from my AniList profile, organized by status.
 
 <div id="anilist-media" aria-label="AniList media collection">
-  {%- assign anilist = site.anilist %}
+  {%- assign anilist = site.data.anilist %}
   {%- assign anime = anilist.data.anime %}
   {%- assign manga = anilist.data.manga %}
 
