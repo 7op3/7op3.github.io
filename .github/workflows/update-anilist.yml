@@ -103,9 +103,9 @@ jobs:
             }
 
             fs.writeFileSync('_data/anilist.json', JSON.stringify(data, null, 2) + '\n');
-          env:
-            ANILIST_CLIENT_ID: ${{ secrets.ANILIST_CLIENT_ID }}
-            ANILIST_CLIENT_SECRET: ${{ secrets.ANILIST_CLIENT_SECRET }}
+        env:
+          ANILIST_CLIENT_ID: ${{ secrets.ANILIST_CLIENT_ID }}
+          ANILIST_CLIENT_SECRET: ${{ secrets.ANILIST_CLIENT_SECRET }}
 
       - name: Commit and push
         run: |
