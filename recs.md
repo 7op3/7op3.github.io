@@ -47,6 +47,37 @@ else that has caught my attention.
   </div>
 </div>
 
+<div id="anilist-currently-reading" aria-label="Currently reading">
+  {%- assign manga = anilist.data.manga %}
+  {%- if manga.lists.size > 0 %}
+    {%- assign reading = false %}
+    {%- for list in manga.lists %}
+      {%- if list.name == 'Reading' %}
+        {%- assign reading = true %}
+        <p class="anilist-current-label">Currently Reading</p>
+        <div class="anilist-current-list">
+          {%- for entry in list.entries %}
+            {%- if entry.status == 'CURRENT' %}
+              {%- assign m = entry.media %}
+              {%- if m %}
+              <div class="anilist-current-item">
+                <span class="anilist-current-title"><a href="https://www.anilist.co/media/{{ m.id }}">{{ m.title.romaji | default: m.title.english | default: 'Unknown' }}</a></span>
+                <span class="anilist-current-status">{{ entry.progress }} / {{ m.chapters | default: '?' }}</span>
+              </div>
+              {%- endif %}
+            {%- endif %}
+          {%- endfor %}
+        </div>
+      {%- endif %}
+    {%- endfor %}
+    {%- if reading == false %}
+      <p class="anilist-empty">No currently reading manga.</p>
+    {%- endif %}
+  {%- else %}
+    <p class="anilist-empty">No manga data available yet.</p>
+  {%- endif %}
+</div>
+
 <!--
   Keep this page small. When adding an item, replace the empty state above with:
 
