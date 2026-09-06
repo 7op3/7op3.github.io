@@ -40,13 +40,6 @@ else that has caught my attention.
   {%- endif %}
 </div>
 
-<div class="recommendations" aria-label="Current recommendations">
-  <div class="recommendations-empty">
-    <p class="recommendations-label">Current shelf</p>
-    <p>Between obsessions at the moment. Check back when something earns a spot.</p>
-  </div>
-</div>
-
 <div id="anilist-currently-reading" aria-label="Currently reading">
   {%- assign manga = anilist.data.manga %}
   {%- if manga.lists.size > 0 %}
@@ -76,6 +69,13 @@ else that has caught my attention.
   {%- else %}
     <p class="anilist-empty">No manga data available yet.</p>
   {%- endif %}
+</div>
+
+<div class="recommendations" aria-label="Current recommendations">
+  <div class="recommendations-empty">
+    <p class="recommendations-label">Current shelf</p>
+    <p>Between obsessions at the moment. Check back when something earns a spot.</p>
+  </div>
 </div>
 
 <!--
