@@ -22,7 +22,7 @@ Anime and manga from my AniList profile, organized by status.
     {%- assign manga_paused = manga.lists | where: "name", "Paused" | first %}
     {%- assign manga_dropped = manga.lists | where: "name", "Dropped" | first %}
 
-    {%- if completed and completed.lists.size > 0 %}
+    {%- if completed and completed.entries.size > 0 %}
       <h3 class="anilist-section-title">Completed</h3>
       <div class="anilist-list">
         {%- for entry in completed.entries %}
