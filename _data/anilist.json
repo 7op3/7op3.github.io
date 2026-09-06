@@ -1,6 +1,440 @@
 {
   "data": {
-    "anime": { "lists": [] },
-    "manga": { "lists": [] }
+    "anime": {
+      "lists": [
+        {
+          "name": "Paused",
+          "entries": [
+            {
+              "status": "PAUSED",
+              "progress": 4,
+              "score": 0,
+              "startedAt": {
+                "year": 2024,
+                "month": 10,
+                "day": 20
+              },
+              "completedAt": {
+                "year": null,
+                "month": null,
+                "day": null
+              },
+              "media": {
+                "id": 66,
+                "title": {
+                  "romaji": "Azumanga Daiou THE ANIMATION",
+                  "english": "Azumanga Daioh",
+                  "native": "あずまんが大王 THE ANIMATION"
+                },
+                "status": "FINISHED",
+                "episodes": 26,
+                "chapters": null,
+                "description": "Ten year old child prodigy, Chiyo Mihama, is finding it tough fitting in at high school with the girls five years her elder: Osaka (dimwitted with a weird take on the world), Tomo (a powder keg that goes off at a moment’s notice), Kagura (the competitive athlete of the bunch), Yomi (the hothead), and Sakaki (timid and obsessed with a love of animals that isn’t reciprocated). Together with their teacher, they navigate the rough waters and fun times of high school.<br>\n<br>\n(Source: Sentai Filmworks)",
+                "coverImage": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx66-ZqYQWl6LsfeI.png"
+                },
+                "genres": [
+                  "Comedy",
+                  "Slice of Life"
+                ],
+                "averageScore": 79,
+                "trending": 5
+              }
+            },
+            {
+              "status": "PAUSED",
+              "progress": 11,
+              "score": 0,
+              "startedAt": {
+                "year": null,
+                "month": null,
+                "day": null
+              },
+              "completedAt": {
+                "year": null,
+                "month": null,
+                "day": null
+              },
+              "media": {
+                "id": 10165,
+                "title": {
+                  "romaji": "Nichijou",
+                  "english": "Nichijou - My Ordinary Life",
+                  "native": "日常"
+                },
+                "status": "FINISHED",
+                "episodes": 26,
+                "chapters": null,
+                "description": "<i>Nichijou</i> primarily focuses on the daily antics of a trio of childhood friends—high school girls Mio Naganohara, Yuuko Aioi and Mai Minakami—whose stories soon intertwine with the young genius Hakase Shinonome, her robot caretaker Nano, and their talking cat Sakamoto. With every passing day, the lives of these six, as well as of the many people around them, experience both the calms of normal life and the insanity of the absurd. Walking to school, being bitten by a talking crow, spending time with friends, and watching the principal suplex a deer: they are all in a day's work in the extraordinary everyday lives of those in <i>Nichijou</i>. <br><br>\n(Source: MAL Rewrite)",
+                "coverImage": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx10165-tw8Cz7K9tfVJ.png"
+                },
+                "genres": [
+                  "Comedy",
+                  "Slice of Life"
+                ],
+                "averageScore": 83,
+                "trending": 8
+              }
+            },
+            {
+              "status": "PAUSED",
+              "progress": 3,
+              "score": 0,
+              "startedAt": {
+                "year": 2024,
+                "month": 4,
+                "day": 16
+              },
+              "completedAt": {
+                "year": null,
+                "month": null,
+                "day": null
+              },
+              "media": {
+                "id": 154587,
+                "title": {
+                  "romaji": "Sousou no Frieren",
+                  "english": "Frieren: Beyond Journey’s End",
+                  "native": "葬送のフリーレン"
+                },
+                "status": "FINISHED",
+                "episodes": 28,
+                "chapters": null,
+                "description": "The adventure is over but life goes on for an elf mage just beginning to learn what living is all about. Elf mage Frieren and her courageous fellow adventurers have defeated the Demon King and brought peace to the land. But Frieren will long outlive the rest of her former party. How will she come to understand what life means to the people around her? Decades after their victory, the funeral of one her friends confronts Frieren with her own near immortality. Frieren sets out to fulfill the last wishes of her comrades and finds herself beginning a new adventure…\n<br><br>\n(Source: Crunchyroll)",
+                "coverImage": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx154587-qQTzQnEJJ3oB.jpg"
+                },
+                "genres": [
+                  "Adventure",
+                  "Drama",
+                  "Fantasy"
+                ],
+                "averageScore": 91,
+                "trending": 24
+              }
+            },
+            {
+              "status": "PAUSED",
+              "progress": 3,
+              "score": 0,
+              "startedAt": {
+                "year": 2024,
+                "month": 8,
+                "day": 17
+              },
+              "completedAt": {
+                "year": null,
+                "month": null,
+                "day": null
+              },
+              "media": {
+                "id": 175977,
+                "title": {
+                  "romaji": "Shikanoko Nokonoko Koshitantan",
+                  "english": "My Deer Friend Nokotan",
+                  "native": "しかのこのこのここしたんたん"
+                },
+                "status": "FINISHED",
+                "episodes": 12,
+                "chapters": null,
+                "description": "Koshi Torako has everyone fooled. Her classmates see her as the perfect honor student, unaware of her secret delinquent past. But her new picturesque school life is thrown into chaos when she bumps into Shikanoko Noko, a girl with antlers! Mayhem seems to follow this strange doe-eyed girl. Who, or what, is she?\n<br><br>\n(Source: Crunchyroll)<br><br>\n<i>Note: Each episode streamed 4 days early on some streaming services. The original TV broadcast started on June 7th, 2024.</i>",
+                "coverImage": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx175977-kNNpCt8Z72uK.jpg"
+                },
+                "genres": [
+                  "Comedy",
+                  "Fantasy",
+                  "Slice of Life"
+                ],
+                "averageScore": 67,
+                "trending": 1
+              }
+            },
+            {
+              "status": "PAUSED",
+              "progress": 2,
+              "score": 0,
+              "startedAt": {
+                "year": 2025,
+                "month": 7,
+                "day": 10
+              },
+              "completedAt": {
+                "year": null,
+                "month": null,
+                "day": null
+              },
+              "media": {
+                "id": 132405,
+                "title": {
+                  "romaji": "Sono Bisque Doll wa Koi wo Suru",
+                  "english": "My Dress-Up Darling",
+                  "native": "その着せ替え人形は恋をする"
+                },
+                "status": "FINISHED",
+                "episodes": 12,
+                "chapters": null,
+                "description": "High schooler Wakana Gojou cares about one thing: making Hina dolls. With nobody to share his obsession, he has trouble finding friends—or even holding conversation. But after the school’s most popular girl, Marin Kitagawa, reveals a secret of her own, he discovers a new purpose for his sewing skills. Together, they’ll make her cosplay dreams come true! <br>\n<br>\n(Source: Funimation)",
+                "coverImage": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx132405-qP7FQYGmNI3d.jpg"
+                },
+                "genres": [
+                  "Comedy",
+                  "Ecchi",
+                  "Romance",
+                  "Slice of Life"
+                ],
+                "averageScore": 80,
+                "trending": 19
+              }
+            }
+          ]
+        },
+        {
+          "name": "Completed",
+          "entries": [
+            {
+              "status": "COMPLETED",
+              "progress": 12,
+              "score": 9,
+              "startedAt": {
+                "year": null,
+                "month": null,
+                "day": null
+              },
+              "completedAt": {
+                "year": 2024,
+                "month": 4,
+                "day": 16
+              },
+              "media": {
+                "id": 130003,
+                "title": {
+                  "romaji": "Bocchi the Rock!",
+                  "english": "BOCCHI THE ROCK!",
+                  "native": "ぼっち・ざ・ろっく！"
+                },
+                "status": "FINISHED",
+                "episodes": 12,
+                "chapters": null,
+                "description": "Hitori Gotou, “Bocchi-chan,” is a girl who’s so introverted and shy around people that she’d always start her conversations with “Ah...”<br>\n<br>\nDuring her middle school years, she started playing the guitar, wanting to join a band because she thought it could be an opportunity for even someone shy like her to also shine. But because she had no friends, she ended up practicing guitar for six hours every day all by herself. After becoming a skilled guitar player, she uploaded videos of herself playing the guitar to the internet under the name “Guitar Hero” and fantasized about performing at her school’s cultural festival concert. But not only could she not find any bandmates, before she knew it, she was in high school and still wasn’t able to make a single friend!<br>\n<br>\nShe was really close to becoming a shut-in, but one day, Nijika Ijichi, the drummer in Kessoku Band, reached out to her. And because of that, her everyday life started to change little by little...<br>\n<br>\n(Source: Crunchyroll)",
+                "coverImage": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx130003-HTDmeL4RGeJ4.png"
+                },
+                "genres": [
+                  "Comedy",
+                  "Music",
+                  "Slice of Life"
+                ],
+                "averageScore": 87,
+                "trending": 14
+              }
+            }
+          ]
+        },
+        {
+          "name": "Watching",
+          "entries": [
+            {
+              "status": "CURRENT",
+              "progress": 5,
+              "score": 0,
+              "startedAt": {
+                "year": 2026,
+                "month": 3,
+                "day": 3
+              },
+              "completedAt": {
+                "year": null,
+                "month": null,
+                "day": null
+              },
+              "media": {
+                "id": 181841,
+                "title": {
+                  "romaji": "CITY THE ANIMATION",
+                  "english": "CITY THE ANIMATION",
+                  "native": "CITY THE ANIMATION"
+                },
+                "status": "FINISHED",
+                "episodes": 13,
+                "chapters": null,
+                "description": "This town, is not just a normal town.<br>\nThere's laughter, love and emotional moments.<br>\nAn unpredictable ordinary life presented by the residents.<br>\nExciting stuffs come one after another. Welcome to CITY. \n<br><br>\n(Source: Kyoto Animation)",
+                "coverImage": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx181841-R6fB3bmU5eOE.jpg"
+                },
+                "genres": [
+                  "Comedy",
+                  "Slice of Life"
+                ],
+                "averageScore": 80,
+                "trending": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "manga": {
+      "lists": [
+        {
+          "name": "Paused",
+          "entries": [
+            {
+              "status": "PAUSED",
+              "progress": 205,
+              "score": 0,
+              "startedAt": {
+                "year": 2024,
+                "month": 4,
+                "day": 16
+              },
+              "completedAt": {
+                "year": null,
+                "month": null,
+                "day": null
+              },
+              "media": {
+                "id": 33082,
+                "title": {
+                  "romaji": "Nichijou",
+                  "english": "Nichijou",
+                  "native": "日常"
+                },
+                "status": "RELEASING",
+                "episodes": null,
+                "chapters": null,
+                "description": "<i>Nichijou</i> primarily focuses on the daily antics of a trio of childhood friends—high school girls Mio Naganohara, Yuuko Aioi and Mai Minakami—whose stories soon intertwine with the young genius Hakase Shinonome, her robot caretaker Nano, and their talking cat Sakamoto. With every passing day, the lives of these six, as well as of the many people around them, experience both the calms of normal life and the insanity of the absurd. Walking to school, being bitten by a talking crow, spending time with friends, and watching the principal suplex a deer: they are all in a day's work in the extraordinary everyday lives of those in <i>Nichijou</i>.<br><br>",
+                "coverImage": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx33082-YrGJ9Tj3UJ3a.png"
+                },
+                "genres": [
+                  "Comedy",
+                  "Slice of Life"
+                ],
+                "averageScore": 83,
+                "trending": 0
+              }
+            },
+            {
+              "status": "PAUSED",
+              "progress": 33,
+              "score": 0,
+              "startedAt": {
+                "year": 2026,
+                "month": 1,
+                "day": 8
+              },
+              "completedAt": {
+                "year": null,
+                "month": null,
+                "day": null
+              },
+              "media": {
+                "id": 106726,
+                "title": {
+                  "romaji": "Shimeji Simulation",
+                  "english": null,
+                  "native": "シメジ シミュレーション"
+                },
+                "status": "FINISHED",
+                "episodes": null,
+                "chapters": 49,
+                "description": "A girl who shut herself in a closet for the last 2 years of middle school realizes she has to go to high school. When she exits her closet for the first time in two years and looks at herself in the mirror, she notices that she grew shimeji mushrooms out of her head.\n",
+                "coverImage": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx106726-VaixYIRrOFu8.jpg"
+                },
+                "genres": [
+                  "Comedy",
+                  "Psychological",
+                  "Slice of Life"
+                ],
+                "averageScore": 84,
+                "trending": 0
+              }
+            }
+          ]
+        },
+        {
+          "name": "Reading",
+          "entries": [
+            {
+              "status": "CURRENT",
+              "progress": 94,
+              "score": 9.3,
+              "startedAt": {
+                "year": 2024,
+                "month": 4,
+                "day": 16
+              },
+              "completedAt": {
+                "year": null,
+                "month": null,
+                "day": null
+              },
+              "media": {
+                "id": 111258,
+                "title": {
+                  "romaji": "Bocchi the Rock!",
+                  "english": "Bocchi the Rock!",
+                  "native": "ぼっち・ざ・ろっく！"
+                },
+                "status": "RELEASING",
+                "episodes": null,
+                "chapters": null,
+                "description": "Hitori Gotoh just wants to be popular, but the thought of interacting with her classmates makes her fall to pieces. Her solution-become a rock legend so cool that people approach her instead! However, while spending all of middle school in her closet shredding on the guitar may have earned her anonymous internet fame, it did nothing for her social skills. Now a high schooler, Hitori’s feeling ready to shrivel up and die-when she gets a sudden request to fill in for a band! It’s like her wish came true-but does this most anxious of introverts have what it takes to perform in front of a live audience?!\n<br><br>\n(Source: Yen Press)",
+                "coverImage": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx111258-JWKMq8VGpdiL.jpg"
+                },
+                "genres": [
+                  "Comedy",
+                  "Music",
+                  "Slice of Life"
+                ],
+                "averageScore": 82,
+                "trending": 2
+              }
+            },
+            {
+              "status": "CURRENT",
+              "progress": 79,
+              "score": 0,
+              "startedAt": {
+                "year": 2026,
+                "month": 5,
+                "day": 30
+              },
+              "completedAt": {
+                "year": null,
+                "month": null,
+                "day": null
+              },
+              "media": {
+                "id": 30104,
+                "title": {
+                  "romaji": "Yotsuba to!",
+                  "english": "Yotsuba&!",
+                  "native": "よつばと！"
+                },
+                "status": "RELEASING",
+                "episodes": null,
+                "chapters": null,
+                "description": "Hello! This is Koiwai Yotsuba, Yotsuba Koiwai...um, YOTSUBA! Yotsuba moved with Daddy to a new house from our old house waaaaaaay over there! And moving's fun 'cos people wave! (Ohhhh!!) And Yotsuba met these nice people next door and made friends to play with (one of 'em acted like one of those bad strangers Daddy told Yotsuba not to go with, but it was okay in the end). I hope we get to play a lot. And eat ice cream! And-and-and...oh yeah! You should come play with Yotsuba too!<br><br>\n(Source: Yen Press)\n<br><br>\n<i>Notes:<br>\n- Includes an interlude.<br>\n- Won the Excellence Award for Manga at the Japan Media Arts Festival in 2006 and the Grand Prize of the 20th Osamu Tezuka Cultural Prize in 2016.<br>\n- Was nominated for the Manga Taishō award in 2008 and for the 12th and 20th Osamu Tezuka Cultural Prize in 2008 and 2016.<br>\n- Was nominated for the Eisner Award in the \"Best Publication for Kids\" category.</i>",
+                "coverImage": {
+                  "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx30104-sUVzNlTWZ5cu.jpg"
+                },
+                "genres": [
+                  "Comedy",
+                  "Slice of Life"
+                ],
+                "averageScore": 88,
+                "trending": 2
+              }
+            }
+          ]
+        }
+      ]
+    }
   }
 }
