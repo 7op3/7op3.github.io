@@ -9,7 +9,7 @@ passing along right now. It can be a game, a show, a site, a tool, or anything
 else that has caught my attention.
 
 <div id="anilist-currently-watching" aria-label="Currently watching">
-  {%- assign anilist = site.anilist %}
+  {%- assign anilist = site.data.anilist %}
   {%- assign anime = anilist.data.anime %}
   {%- if anime.lists.size > 0 %}
     {%- assign current = false %}
