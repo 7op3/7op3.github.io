@@ -793,4 +793,68 @@ img {
   border-color: #2a3850;
 }
 
+.anilist-current-label {
+  font-size: 1.1em;
+  color: #0b5ed7;
+  margin: 0 0 8px;
+}
+
+[data-theme=dark] .anilist-current-label {
+  color: #7cb0ff;
+}
+
+.anilist-current-list {
+  margin-bottom: 16px;
+}
+
+.anilist-current-item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid #b7c0cc;
+  border-radius: 4px;
+  background: #ffffff;
+  margin-bottom: 4px;
+}
+.anilist-current-item:hover {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme=dark] .anilist-current-item {
+  border-color: #2a3850;
+  background: #17202e;
+}
+[data-theme=dark] .anilist-current-item:hover {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.anilist-current-title {
+  font-size: 0.9em;
+}
+.anilist-current-title a {
+  color: #0b5ed7;
+  text-decoration: none;
+}
+.anilist-current-title a:hover {
+  text-decoration: underline;
+  color: #b30000;
+}
+
+[data-theme=dark] .anilist-current-title a {
+  color: #7cb0ff;
+}
+[data-theme=dark] .anilist-current-title a:hover {
+  color: #ff8a8a;
+}
+
+.anilist-current-status {
+  font-size: 0.8em;
+  color: #7a8696;
+}
+
+[data-theme=dark] .anilist-current-status {
+  color: #8b98ab;
+}
+
 /*# sourceMappingURL=main-compiled.css.map */

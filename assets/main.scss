@@ -779,3 +779,76 @@ img { max-width: 100%; border-radius: 6px; }
   color: $dark-muted;
   border-color: $dark-border;
 }
+
+// ---- AniList on /recs ----
+
+.anilist-current-label {
+  font-size: 1.1em;
+  color: $light-link;
+  margin: 0 0 8px;
+}
+
+[data-theme="dark"] .anilist-current-label {
+  color: $dark-link;
+}
+
+.anilist-current-list {
+  margin-bottom: 16px;
+}
+
+.anilist-current-item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid $light-border;
+  border-radius: 4px;
+  background: $light-panel;
+  margin-bottom: 4px;
+
+  &:hover {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  }
+}
+
+[data-theme="dark"] .anilist-current-item {
+  border-color: $dark-border;
+  background: $dark-panel;
+
+  &:hover {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.anilist-current-title {
+  font-size: 0.9em;
+
+  a {
+    color: $light-link;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      color: $light-link-hover;
+    }
+  }
+}
+
+[data-theme="dark"] .anilist-current-title {
+  a {
+    color: $dark-link;
+
+    &:hover {
+      color: $dark-link-hover;
+    }
+  }
+}
+
+.anilist-current-status {
+  font-size: 0.8em;
+  color: $light-muted;
+}
+
+[data-theme="dark"] .anilist-current-status {
+  color: $dark-muted;
+}
