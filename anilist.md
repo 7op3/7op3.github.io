@@ -99,6 +99,7 @@ Anime and manga from my AniList profile, organized by status.
   {%- else %}
     <p class="anilist-empty">AniList data is currently unavailable. Please check back later.</p>
   {%- endif %}
+  {%- endif %}
 </div>
 
 <script>
