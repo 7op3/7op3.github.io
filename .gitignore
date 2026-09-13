@@ -7,3 +7,26 @@ vendor/
 
 node_modules/
 package-lock.json
+
+# Pre-commit
+.pre-commit-cache/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Wrangler
+.wrangler/
+.dev.vars

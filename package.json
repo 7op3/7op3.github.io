@@ -1,4 +1,15 @@
 {
+  "name": "7op3.github.io",
+  "version": "1.0.0",
+  "description": "Personal website of Amelia",
+  "scripts": {
+    "dev": "bundle exec jekyll serve --livereload",
+    "build": "bundle exec jekyll build",
+    "clean": "bundle exec jekyll clean",
+    "lint": "pre-commit run --all-files",
+    "worker:dev": "npx wrangler dev",
+    "worker:deploy": "npx wrangler deploy"
+  },
   "devDependencies": {
     "wrangler": "^4.129.0"
   },

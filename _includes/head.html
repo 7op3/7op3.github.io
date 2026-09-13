@@ -17,7 +17,12 @@
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   <script src="{{ "/assets/lastfm.js" | relative_url }}" defer></script>
   <link rel="icon" href="{{ "/assets/favicon.svg" | relative_url }}" type="image/svg+xml">
+  <link rel="icon" href="{{ "/assets/favicon-dark.svg" | relative_url }}" type="image/svg+xml" media="(prefers-color-scheme: dark)">
   {%- feed_meta -%}
+  <meta name="format-detection" content="telephone=no">
+  <link rel="preconnect" href="https://ws.audioscrobbler.com">
+  <link rel="preconnect" href="https://graphql.anilist.co">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://lastfm-proxy.unkwngly28.workers.dev; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: https://ws.audioscrobbler.com https://cdn.anilist.co https://lastfm-imgs.akamaized.net; connect-src 'self' https://lastfm-proxy.unkwngly28.workers.dev https://ws.audioscrobbler.com https://graphql.anilist.co; font-src 'self' data:;">
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
   {%- endif -%}

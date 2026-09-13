@@ -10,8 +10,9 @@ else that has caught my attention.
 
 <div id="anilist-currently-watching" aria-label="Currently watching">
   {%- assign anilist = site.data.anilist %}
-  {%- assign anime = anilist.data.anime %}
-  {%- if anime.lists.size > 0 %}
+  {%- if anilist and anilist.data %}
+    {%- assign anime = anilist.data.anime %}
+    {%- if anime and anime.lists.size > 0 %}
     {%- assign current = false %}
     {%- for list in anime.lists %}
       {%- if list.name == 'Watching' %}
@@ -20,13 +21,7 @@ else that has caught my attention.
         <div class="anilist-current-list">
           {%- for entry in list.entries %}
             {%- if entry.status == 'CURRENT' %}
-              {%- assign m = entry.media %}
-              {%- if m %}
-              <div class="anilist-current-item">
-                <span class="anilist-current-title"><a href="https://www.anilist.co/media/{{ m.id }}">{{ m.title.romaji | default: m.title.english | default: 'Unknown' }}</a></span>
-                <span class="anilist-current-status">{{ entry.progress }} / {{ m.episodes | default: '?' }}</span>
-              </div>
-              {%- endif %}
+              {%- include anilist-current-item.html media=entry.media entry=entry progress_type="episodes" -%}
             {%- endif %}
           {%- endfor %}
         </div>
@@ -36,13 +31,17 @@ else that has caught my attention.
       <p class="anilist-empty">No currently watching titles.</p>
     {%- endif %}
   {%- else %}
-    <p class="anilist-empty">No AniList data available yet.</p>
+    <p class="anilist-empty">No anime data available.</p>
+  {%- endif %}
+  {%- else %}
+    <p class="anilist-empty">AniList data is currently unavailable.</p>
   {%- endif %}
 </div>
 
 <div id="anilist-currently-reading" aria-label="Currently reading">
-  {%- assign manga = anilist.data.manga %}
-  {%- if manga.lists.size > 0 %}
+  {%- if anilist and anilist.data %}
+    {%- assign manga = anilist.data.manga %}
+    {%- if manga and manga.lists.size > 0 %}
     {%- assign reading = false %}
     {%- for list in manga.lists %}
       {%- if list.name == 'Reading' %}
@@ -51,13 +50,7 @@ else that has caught my attention.
         <div class="anilist-current-list">
           {%- for entry in list.entries %}
             {%- if entry.status == 'CURRENT' %}
-              {%- assign m = entry.media %}
-              {%- if m %}
-              <div class="anilist-current-item">
-                <span class="anilist-current-title"><a href="https://www.anilist.co/media/{{ m.id }}">{{ m.title.romaji | default: m.title.english | default: 'Unknown' }}</a></span>
-                <span class="anilist-current-status">{{ entry.progress }} / {{ m.chapters | default: '?' }}</span>
-              </div>
-              {%- endif %}
+              {%- include anilist-current-item.html media=entry.media entry=entry progress_type="chapters" -%}
             {%- endif %}
           {%- endfor %}
         </div>
@@ -67,7 +60,10 @@ else that has caught my attention.
       <p class="anilist-empty">No currently reading manga.</p>
     {%- endif %}
   {%- else %}
-    <p class="anilist-empty">No manga data available yet.</p>
+    <p class="anilist-empty">No manga data available.</p>
+  {%- endif %}
+  {%- else %}
+    <p class="anilist-empty">AniList data is currently unavailable.</p>
   {%- endif %}
 </div>
 

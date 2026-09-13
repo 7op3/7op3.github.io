@@ -1,0 +1,36 @@
+# Pre-commit hooks for the personal site
+# Install with: pip install pre-commit
+# Run with: pre-commit install
+
+repos:
+  # Check for basic YAML syntax errors
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.35.1
+    hooks:
+      - id: yamllint
+        args: [--strict]
+
+  # Check for basic JSON syntax errors
+  - repo: https://github.com/jalessandro/jsonlint
+    rev: 0.5.0
+    hooks:
+      - id: jsonlint
+
+  # Check for basic markdown syntax errors
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.41.0
+    hooks:
+      - id: markdownlint
+        args: [--fix]
+
+  # Check for trailing whitespace and other file issues
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-added-large-files
+        args: [--maxkb=1000]
+      - id: check-merge-conflict

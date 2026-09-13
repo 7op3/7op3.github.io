@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Jekyll core
-gem "jekyll", "~> 3.10"
+gem "jekyll", "~> 4.3"
 
 # Directly require plugins used by the site.
 group :jekyll_plugins do
@@ -10,9 +10,9 @@ group :jekyll_plugins do
 end
 
 # Syntax highlighting
-gem "rouge", "~> 3.0"
+gem "rouge", "~> 4.0"
 
-# Ruby 3.4+ ships erb as a bundled gem; declare it so Jekyll 3.x can load it.
+# Ruby 3.4+ ships erb as a bundled gem; declare it so Jekyll can load it.
 gem "erb"
 gem "base64"
 gem "bigdecimal"

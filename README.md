@@ -27,7 +27,53 @@ bundle install
 bundle exec jekyll serve
 ```
 
+Or use npm scripts:
+
+```bash
+npm install
+npm run dev
+```
+
 Then open <http://localhost:4000>.
+
+## Development Tools
+
+### Pre-commit Hooks
+
+The project includes pre-commit hooks for code quality:
+
+```bash
+# Install pre-commit
+pip install pre-commit
+
+# Install hooks
+pre-commit install
+
+# Run hooks manually
+pre-commit run --all-files
+```
+
+The hooks check for:
+- YAML syntax errors
+- JSON syntax errors
+- Markdown formatting issues
+- Trailing whitespace
+- File size limits
+- Merge conflicts
+
+### Cloudflare Worker
+
+The Last.fm proxy is a Cloudflare Worker:
+
+```bash
+# Deploy the worker
+npx wrangler deploy
+
+# Run locally
+npx wrangler dev
+```
+
+Make sure to set the `LASTFM_API_KEY` secret in the Cloudflare dashboard.
 
 ## Last.fm widget
 

@@ -6,10 +6,18 @@
     <div class="header-bar">
       <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
 
-      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle light and dark mode"></button>
+      <div class="header-controls">
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle light and dark mode"></button>
+
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="hamburger"></span>
+          <span class="hamburger"></span>
+          <span class="hamburger"></span>
+        </button>
+      </div>
 
       {%- if page_paths -%}
-        <nav class="site-nav">
+        <nav class="site-nav" id="site-nav">
           {%- for path in page_paths -%}
             {%- assign my_page = site.pages | where: "path", path | first -%}
             {%- if my_page.title -%}
@@ -30,6 +38,15 @@
       function render() {
         var dark = document.documentElement.getAttribute('data-theme') === 'dark';
         btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+        // Update favicon based on theme
+        var favicons = document.querySelectorAll('link[rel="icon"]');
+        favicons.forEach(function(favicon) {
+          if (dark && favicon.href.includes('favicon.svg') && !favicon.href.includes('favicon-dark.svg')) {
+            favicon.setAttribute('media', '(prefers-color-scheme: light)');
+          } else if (!dark && favicon.href.includes('favicon-dark.svg')) {
+            favicon.setAttribute('media', '(prefers-color-scheme: dark)');
+          }
+        });
       }
       render();
       btn.addEventListener('click', function () {
@@ -37,6 +54,35 @@
         document.documentElement.setAttribute('data-theme', next);
         try { localStorage.setItem('theme', next); } catch (e) {}
         render();
+      });
+    })();
+
+    (function () {
+      var menuToggle = document.getElementById('mobile-menu-toggle');
+      var siteNav = document.getElementById('site-nav');
+      if (!menuToggle || !siteNav) return;
+
+      menuToggle.addEventListener('click', function () {
+        var isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', !isExpanded);
+        siteNav.classList.toggle('mobile-menu-open');
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', function (e) {
+        if (!menuToggle.contains(e.target) && !siteNav.contains(e.target)) {
+          menuToggle.setAttribute('aria-expanded', 'false');
+          siteNav.classList.remove('mobile-menu-open');
+        }
+      });
+
+      // Close menu when clicking a link
+      var pageLinks = siteNav.querySelectorAll('.page-link');
+      pageLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          menuToggle.setAttribute('aria-expanded', 'false');
+          siteNav.classList.remove('mobile-menu-open');
+        });
       });
     })();
   </script>

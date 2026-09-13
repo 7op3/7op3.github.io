@@ -1,0 +1,18 @@
+{%- comment -%}
+Reusable AniList current media item component (simplified for lists).
+Parameters:
+  - media: The media object from AniList API
+  - entry: The entry object with progress
+  - progress_type: "episodes" or "chapters"
+{%- endcomment -%}
+
+{%- assign m = include.media -%}
+{%- assign entry = include.entry -%}
+{%- assign progress_type = include.progress_type | default: "episodes" -%}
+
+{%- if m -%}
+<div class="anilist-current-item">
+  <span class="anilist-current-title"><a href="https://www.anilist.co/media/{{ m.id }}">{{ m.title.romaji | default: m.title.english | default: 'Unknown' }}</a></span>
+  <span class="anilist-current-status">{{ entry.progress }} / {% if progress_type == "episodes" %}{{ m.episodes | default: '?' }}{% else %}{{ m.chapters | default: '?' }}{% endif %}</span>
+</div>
+{%- endif -%}
