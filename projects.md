@@ -14,14 +14,6 @@ A collection of projects I've worked on. Some are active, some are experiments, 
       <a href="https://github.com/7op3/7op3.github.io" class="project-link">View Source</a>
     </div>
   </div>
-
-  <div class="project-card">
-    <h3>Last.fm Proxy</h3>
-    <p class="project-description">A Cloudflare Worker that proxies the Last.fm API to enable secure client-side requests without exposing API keys.</p>
-    <div class="project-links">
-      <a href="#" class="project-link">View Source</a>
-    </div>
-  </div>
 </div>
 
 <div class="projects-empty">

@@ -18,11 +18,11 @@ header_pages:
 # Social links. The /socials/ page always shows every entry; the sidebar
 # "Elsewhere" box skips any entry flagged `sidebar: false`.
 socials:
-  - { name: YouTube, url: "https://youtube.com/@7op3", icon: "youtube", category: "Creative", description: "My YouTube channel" }
-  - { name: Twitter / X, url: "https://twitter.com/shockhorrors", icon: "twitter", category: "Social", description: "Follow me on X" }
-  - { name: Last.fm, url: "https://www.last.fm/user/ropeburns", icon: "music", category: "Music", description: "My music listening history" }
-  - { name: GitHub, url: "https://github.com/7op3", icon: "github", category: "Development", description: "My code and projects" }
-  - { name: AniList, url: "https://anilist.co/user/warps", icon: "play", category: "Entertainment", description: "My anime and manga list" }
+  - { name: YouTube, url: "https://youtube.com/@7op3" }
+  - { name: Twitter / X, url: "https://twitter.com/shockhorrors" }
+  - { name: Last.fm, url: "https://www.last.fm/user/ropeburns" }
+  - { name: GitHub, url: "https://github.com/7op3" }
+  - { name: AniList, url: "https://anilist.co/user/warps" }
 
 plugins:
   - jekyll-seo-tag

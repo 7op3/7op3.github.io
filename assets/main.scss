@@ -34,13 +34,15 @@ $font-stack: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 // Skip link for accessibility
 .skip-link {
   position: absolute;
-  top: -40px;
+  top: -100px;
   left: 0;
   background: #000;
   color: #fff;
   padding: 8px;
-  z-index: 100;
+  z-index: 1000;
   transition: top 0.3s;
+  width: 100%;
+  text-align: center;
 
   &:focus {
     top: 0;
@@ -131,6 +133,7 @@ a {
   color: #fff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
   border-radius: 14px;
+  text-decoration: none;
 
   &:visited { color: #fff; }
 
@@ -607,89 +610,6 @@ h3 {
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85), 0 1px 2px rgba(0, 0, 0, 0.18);
 }
 
-// ---- Social links ----
-
-.social-category {
-  margin-bottom: 24px;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-
-  h3 {
-    margin: 0 0 12px;
-    font-size: 16px;
-    color: $light-link;
-    border-bottom: 2px solid $light-border;
-    padding-bottom: 6px;
-  }
-}
-
-.social-links {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.social-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  background: $light-panel;
-  border: 1px solid $light-border;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 1px 3px rgba(0, 0, 0, 0.1);
-
-  &:hover {
-    background: #f8fafc;
-    border-color: $light-link;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    transform: translateY(-1px);
-  }
-
-  &:visited {
-    .social-name {
-      color: $light-text;
-    }
-  }
-}
-
-.social-icon {
-  flex: 0 0 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  background: linear-gradient(135deg, #86c5f4, #5a9fe0);
-  color: #fff;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
-}
-
-.social-info {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.social-name {
-  font-size: 15px;
-  font-weight: bold;
-  color: $light-text;
-}
-
-.social-description {
-  font-size: 13px;
-  color: $light-muted;
-}
-
 // ---- Projects ----
 
 .projects-grid {
@@ -887,94 +807,6 @@ pre {
   overflow-x: auto;
 
   code { padding: 0; border: none; background: none; }
-}
-
-table {
-  margin: 16px 0;
-  border-collapse: collapse;
-  color: $light-text;
-
-  th, td { padding: 6px 12px; border: 1px solid $light-border; }
-  th { background-color: #eef3f9; }
-}
-
-img { max-width: 100%; border-radius: 6px; }
-
-// ---- Recommendations ----
-
-.recommendations {
-  margin-top: 22px;
-  border-top: 1px solid #d6dde6;
-}
-
-.recommendation,
-.recommendations-empty {
-  padding: 14px 2px;
-  border-bottom: 1px solid #d6dde6;
-}
-
-.recommendation h2 {
-  margin: 0;
-  font-size: 17px;
-}
-
-.recommendation h2 a {
-  text-decoration: none;
-
-  &:hover { text-decoration: underline; }
-}
-
-.recommendation p:last-child,
-.recommendations-empty p:last-child {
-  margin: 5px 0 0;
-}
-
-.recommendations-empty {
-  padding: 17px 14px;
-  color: $light-muted;
-  background: linear-gradient(to bottom, #f9fbfd, #f1f5f9);
-  border: 1px solid #d6dde6;
-  border-radius: 5px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
-}
-
-// ---- Dark theme ----
-
-[data-theme="dark"] {
-  background-color: $dark-bg;
-
-  body {
-    background-color: $dark-bg;
-    background-image: linear-gradient(to bottom, #131c2b 0%, $dark-bg 260px);
-    background-repeat: no-repeat;
-    color: $dark-text;
-  }
-
-  a {
-    color: $dark-link;
-    &:hover { color: $dark-link-hover; }
-    &:visited { color: $dark-link; }
-    &:focus {
-      outline: 2px solid $dark-link;
-      outline-offset: 2px;
-    }
-  }
-
-  .site-header { background: $header-grad-dark; }
-
-  .site-title,
-  .site-title:visited,
-  .site-title:hover {
-    color: #fff;
-  }
-
-  .page-link,
-  .page-link:visited,
-  .page-link:hover {
-    color: #fff;
-  }
-
-  .page-link:focus {
     outline: 2px solid rgba(255, 255, 255, 0.3);
     outline-offset: 2px;
   }
@@ -1132,36 +964,6 @@ img { max-width: 100%; border-radius: 6px; }
   h3 {
     color: #e4ebf5;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-  }
-
-  .social-category h3 {
-    color: $dark-link;
-    border-bottom-color: $dark-border;
-  }
-
-  .social-link {
-    background: $dark-panel;
-    border-color: $dark-border;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.2);
-
-    &:hover {
-      background: lighten($dark-panel, 5%);
-      border-color: $dark-link;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    }
-  }
-
-  .social-icon {
-    background: linear-gradient(135deg, #4a77c0, #3560a8);
-    border-color: rgba(0, 0, 0, 0.3);
-  }
-
-  .social-name {
-    color: $dark-text;
-  }
-
-  .social-description {
-    color: $dark-muted;
   }
 
   .project-card {

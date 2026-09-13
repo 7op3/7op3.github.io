@@ -17,12 +17,6 @@ Want to get in touch? Here are the best ways to reach me:
     <h3>Social Media</h3>
     <p>Feel free to reach out on any of my social platforms listed on the <a href="/socials">socials page</a>.</p>
   </div>
-
-  <div class="contact-method">
-    <h3>GitHub</h3>
-    <p>For code-related questions or collaborations, you can find me on GitHub.</p>
-    <a href="https://github.com/7op3" class="contact-link">github.com/7op3</a>
-  </div>
 </div>
 
 <div class="contact-note">
