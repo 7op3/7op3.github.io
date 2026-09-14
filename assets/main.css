@@ -134,13 +134,16 @@ a:visited {
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 50%;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 1px 3px rgba(0, 0, 0, 0.3);
+  text-decoration: none !important;
 }
 .theme-toggle:hover {
   filter: brightness(1.08);
+  text-decoration: none !important;
 }
 .theme-toggle:active {
   transform: translateY(1px);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  text-decoration: none !important;
 }
 
 .theme-toggle::after {
