@@ -18,7 +18,3 @@ Want to get in touch? Here are the best ways to reach me:
     <p>Feel free to reach out on any of my social platforms listed on the <a href="/socials">socials page</a>.</p>
   </div>
 </div>
-
-<div class="contact-note">
-  <p><strong>Note:</strong> I'm not currently looking for freelance work or job opportunities, but I'm always happy to chat about interesting projects or collaborate on open source.</p>
-</div>
