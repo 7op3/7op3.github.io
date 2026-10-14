@@ -38,7 +38,7 @@
                   "Slice of Life"
                 ],
                 "averageScore": 79,
-                "trending": 2
+                "trending": 4
               }
             },
             {
@@ -74,7 +74,7 @@
                   "Slice of Life"
                 ],
                 "averageScore": 83,
-                "trending": 6
+                "trending": 8
               }
             },
             {
@@ -111,7 +111,7 @@
                   "Fantasy"
                 ],
                 "averageScore": 91,
-                "trending": 30
+                "trending": 32
               }
             },
             {
@@ -148,7 +148,7 @@
                   "Slice of Life"
                 ],
                 "averageScore": 67,
-                "trending": 4
+                "trending": 2
               }
             },
             {
@@ -186,7 +186,7 @@
                   "Slice of Life"
                 ],
                 "averageScore": 80,
-                "trending": 21
+                "trending": 17
               }
             }
           ]
@@ -228,7 +228,7 @@
                   "Slice of Life"
                 ],
                 "averageScore": 87,
-                "trending": 10
+                "trending": 8
               }
             }
           ]
@@ -269,7 +269,7 @@
                   "Slice of Life"
                 ],
                 "averageScore": 80,
-                "trending": 3
+                "trending": 1
               }
             }
           ]
@@ -351,7 +351,7 @@
                   "Slice of Life"
                 ],
                 "averageScore": 84,
-                "trending": 0
+                "trending": 3
               }
             },
             {
@@ -434,7 +434,7 @@
             },
             {
               "status": "CURRENT",
-              "progress": 8,
+              "progress": 10,
               "score": 0,
               "startedAt": {
                 "year": 2026,
@@ -466,7 +466,7 @@
                   "Slice of Life"
                 ],
                 "averageScore": 78,
-                "trending": 0
+                "trending": 1
               }
             }
           ]
