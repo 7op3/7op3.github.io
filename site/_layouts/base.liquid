@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}" data-theme="light">
+<html lang="en" data-theme="light">
 
-  {%- include head.html -%}
+  {%- include "head.liquid", title: title, page_url: page.url -%}
+
 
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    {%- include header.html -%}
+    {%- include "header.liquid", page_url: page.url -%}
+
 
     <main id="main-content" class="page-content" aria-label="Content">
       <div class="wrapper">
@@ -14,7 +16,7 @@
       </div>
     </main>
 
-    {%- include footer.html -%}
+    {%- include "footer.liquid" -%}
 
   </body>
 

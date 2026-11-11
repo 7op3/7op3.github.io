@@ -1,8 +1,8 @@
-<aside class="sidebar">
+<aside class="sidebar" aria-label="Sidebar">
   <div class="widget">
     <h2 class="widget-title">About</h2>
     <div class="widget-body">
-      <p>{{- site.description | escape -}}</p>
+      <p>Developer, anime enjoyer, professional scrobbler. I make small things for the web and keep this site as their home.</p>
     </div>
   </div>
 
@@ -11,9 +11,7 @@
     <div class="widget-body">
       <ul class="widget-list">
         {%- for social in site.socials -%}
-          {%- unless social.sidebar == false -%}
         <li><a href="{{ social.url }}" rel="me">{{ social.name | escape }}</a></li>
-          {%- endunless -%}
         {%- endfor -%}
       </ul>
     </div>
@@ -30,10 +28,23 @@
   </div>
 
   <div class="widget">
+    <h2 class="widget-title">Buttons</h2>
+    <div class="widget-body">
+      <div class="buttons-row">
+        <a class="button-88x31" href="/">
+          <span class="button-88x31-name">{{ site.title | escape }}</span>
+          <span class="button-88x31-sub">seven.oops.wtf</span>
+        </a>
+      </div>
+      <p class="buttons-note">Link it, don't hotlink it. More buttons eventually.</p>
+    </div>
+  </div>
+
+  <div class="widget">
     <h2 class="widget-title">Subscribe</h2>
     <div class="widget-body">
       <p class="subscribe-text">Keep up with the feed:</p>
-      <a class="rss-button" href="{{ "/feed.xml" | relative_url }}">RSS</a>
+      <a class="rss-button" href="/feed.xml">RSS</a>
     </div>
   </div>
 </aside>

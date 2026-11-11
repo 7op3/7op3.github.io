@@ -1,6 +1,7 @@
 ---
-layout: home
+layout: home.liquid
 title: Home
+permalink: /
 ---
 
 # Hi, I'm Amelia 👋
@@ -13,22 +14,21 @@ I'm a developer and creative enthusiast who enjoys building things on the web. W
 
 ## What's here
 
-- [Socials](/socials) — where to find me around the web
-- [Recommendations](/recs) — sites, tools, and other things I think are worth your time
-- [Projects](/projects) — things I've built
-- [Contact](/contact) — how to get in touch
-- [AniList](/anilist) — my anime and manga collection
+- [Socials](/socials/) — where to find me around the web
+- [Recommendations](/recs/) — sites, tools, and other things I think are worth your time
+- [Projects](/projects/) — things I've built
+- [Contact](/contact/) — how to get in touch
+- [AniList](/anilist/) — my anime and manga collection
 
 ## Latest activity
 
 <div class="latest-activity">
-  {%- assign anilist = site.data.anilist %}
   {%- if anilist and anilist.data %}
     <div class="activity-section">
       <h3>Currently Watching</h3>
       {%- assign anime = anilist.data.anime %}
       {%- if anime and anime.lists.size > 0 %}
-        {%- assign watching = anime.lists | where_exp: "item", "item.name == 'Watching'" | first %}
+        {%- assign watching = anime.lists | first_where: "name", "Watching" %}
         {%- if watching and watching.entries.size > 0 %}
           {%- for entry in watching.entries limit: 3 %}
             {%- if entry.status == 'CURRENT' %}
@@ -53,7 +53,7 @@ I'm a developer and creative enthusiast who enjoys building things on the web. W
       <h3>Currently Reading</h3>
       {%- assign manga = anilist.data.manga %}
       {%- if manga and manga.lists.size > 0 %}
-        {%- assign reading = manga.lists | where_exp: "item", "item.name == 'Reading'" | first %}
+        {%- assign reading = manga.lists | first_where: "name", "Reading" %}
         {%- if reading and reading.entries.size > 0 %}
           {%- for entry in reading.entries limit: 3 %}
             {%- if entry.status == 'CURRENT' %}
@@ -78,5 +78,4 @@ I'm a developer and creative enthusiast who enjoys building things on the web. W
   {%- endif %}
 </div>
 
-It's still a work in progress, but a much tidier one than before. Thanks for
-stopping by.
+It's still a work in progress, but a much tidier one than before. Thanks for stopping by.

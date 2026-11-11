@@ -1,11 +1,11 @@
 ---
-layout: default
+layout: base.liquid
 ---
 
 <div class="layout-grid">
   <div class="panel">
     <div class="box-header">
-      <h1 class="page-heading">{{ page.title | escape }}</h1>
+      <h1 class="page-heading">{{ title | escape }}</h1>
     </div>
 
     <div class="panel-content">
@@ -13,5 +13,5 @@ layout: default
     </div>
   </div>
 
-  {%- include sidebar.html -%}
+  {%- include "sidebar.liquid" -%}
 </div>

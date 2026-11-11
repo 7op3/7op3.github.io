@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: page.liquid
 title: Socials
 permalink: /socials/
 ---

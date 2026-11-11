@@ -2,15 +2,18 @@
   "name": "7op3.github.io",
   "version": "1.0.0",
   "description": "Personal website of Amelia",
+  "type": "module",
   "scripts": {
-    "dev": "bundle exec jekyll serve --livereload",
-    "build": "bundle exec jekyll build",
-    "clean": "bundle exec jekyll clean",
+    "dev": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy",
+    "clean": "rm -rf _site",
     "lint": "pre-commit run --all-files",
     "worker:dev": "npx wrangler dev",
     "worker:deploy": "npx wrangler deploy"
   },
   "devDependencies": {
+    "@11ty/eleventy": "^3.1.8",
+    "@11ty/eleventy-plugin-rss": "^3.1.0",
     "wrangler": "^4.129.0"
   },
   "allowScripts": {

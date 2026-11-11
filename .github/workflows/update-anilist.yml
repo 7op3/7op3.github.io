@@ -19,7 +19,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Fetch AniList data and update _data/anilist.json
+      - name: Fetch AniList data and update site/_data/anilist.json
         uses: actions/github-script@v7
         with:
           script: |
@@ -91,7 +91,7 @@ jobs:
                 if (data.errors) {
                   console.log('AniList GraphQL error: ' + JSON.stringify(data.errors) + ', skipping update');
                 } else {
-                  fs.writeFileSync('_data/anilist.json', JSON.stringify(data, null, 2) + '\n');
+                  fs.writeFileSync('site/_data/anilist.json', JSON.stringify(data, null, 2) + '\n');
                   console.log('AniList data updated successfully');
                 }
               }
@@ -103,6 +103,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add _data/anilist.json
+          git add site/_data/anilist.json
           git commit -m "Update AniList data" || true
           git push

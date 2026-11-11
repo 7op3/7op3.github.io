@@ -1,82 +1,58 @@
-# seven.is-a.dev
+# 7op3.github.io
 
-My personal website, built with [Jekyll](https://jekyllrb.com/) with a custom
-hand-rolled layout (brushed metal + glass skeuomorphic theme), hosted on GitHub
-Pages.
+Personal site of Amelia — [seven.oops.wtf](https://seven.oops.wtf).
 
-Quick warning, this site has been made with the assistance of ai, so there are probable errors and the like.
+Built with [Eleventy](https://www.11ty.dev/) and a hand-authored CSS theme
+("modern with retro anchors": glossy header, tactile buttons, 88×31s).
+Integrations: live Last.fm scrobbles (via a Cloudflare Worker proxy) and
+auto-updating AniList data (via a scheduled GitHub Action).
 
-## Editing
-
-Pages are written in Markdown at the repo root:
-
-- `index.md` — home page
-- `socials.md` — links to my socials
-- `recs.md` — recommendations
-
-To add a page to the top nav, create a new `.md` file and add it to
-`header_pages` in `_config.yml`.
-
-Styling lives in `assets/main.scss`; page structure is in `_layouts/` and
-`_includes/`.
-
-## Running locally
+## Development
 
 ```bash
-bundle install
-bundle exec jekyll serve
+npm install        # install dependencies (Node only — no Ruby anymore)
+npm run dev        # build + local dev server with watch
+npm run build      # build the site to _site/
+npm run clean      # remove _site/
+npm run lint       # run pre-commit hooks across all files
 ```
 
-Or use npm scripts:
+## Structure
+
+- `site/` — everything that becomes the website
+  - `*.md` — content pages (home, socials, recs, projects, contact, anilist, 404)
+  - `feed.liquid` — Atom feed (available at `/feed.xml`, currently empty until posts exist)
+  - `_layouts/` — base, home and page layouts
+  - `_includes/` — head, header, footer, sidebar, AniList item partials
+  - `_data/anilist.json` — AniList data, refreshed every 6 hours by GitHub Actions
+  - `assets/` — `main.css` (the single stylesheet, hand-authored),
+    `lastfm.js` (sidebar Listening widget), favicons
+- `src/index.js` — Cloudflare Worker proxying Last.fm for the Listening widget
+- `eleventy.config.mjs` — Eleventy config, global site data, Liquid filter shims
+- `.github/workflows/deploy.yml` — builds with Eleventy and deploys to GitHub Pages
+- `.github/workflows/update-anilist.yml` — refreshes `site/_data/anilist.json`
+
+## Deploy
+
+Pushes to `main` build and deploy to GitHub Pages automatically via
+`.github/workflows/deploy.yml`. The AniList cron writes its data file and pushes;
+that push triggers a redeploy.
+
+## Cloudflare Worker (Last.fm proxy)
 
 ```bash
-npm install
-npm run dev
+npm run worker:dev      # run locally
+npm run worker:deploy   # deploy
 ```
 
-Then open <http://localhost:4000>.
+The `LASTFM_API_KEY` secret must be set in the Cloudflare dashboard. The worker's
+CORS allowlist includes `https://seven.oops.wtf` and `http://localhost:4173` for
+local dev.
 
-## Development Tools
+## Notes
 
-### Pre-commit Hooks
-
-The project includes pre-commit hooks for code quality:
-
-```bash
-# Install pre-commit
-pip install pre-commit
-
-# Install hooks
-pre-commit install
-
-# Run hooks manually
-pre-commit run --all-files
-```
-
-The hooks check for:
-- YAML syntax errors
-- JSON syntax errors
-- Markdown formatting issues
-- Trailing whitespace
-- File size limits
-- Merge conflicts
-
-### Cloudflare Worker
-
-The Last.fm proxy is a Cloudflare Worker:
-
-```bash
-# Deploy the worker
-npx wrangler deploy
-
-# Run locally
-npx wrangler dev
-```
-
-Make sure to set the `LASTFM_API_KEY` secret in the Cloudflare dashboard.
-
-## Last.fm widget
-
-A Cloudflare Worker proxies the Last.fm API at `/api/lastfm`. The sidebar
-loads track data client-side via that endpoint. Add your Last.fm API key as
-the `LASTFM_API_KEY` Worker secret in the Cloudflare dashboard.
+- The theme uses CSS custom properties for light/dark; `[data-theme="dark"]`
+  in `site/assets/main.css` is the only place colors change. The toggle button
+  persists the choice in `localStorage` and falls back to the OS preference.
+- To add a nav page: create a page in `site/`, then add a link in
+  `site/_includes/header.liquid`.

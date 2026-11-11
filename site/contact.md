@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: page.liquid
 title: Contact
 permalink: /contact/
 ---
@@ -15,6 +15,6 @@ Want to get in touch? Here are the best ways to reach me:
 
   <div class="contact-method">
     <h3>Social Media</h3>
-    <p>Feel free to reach out on any of my social platforms listed on the <a href="/socials">socials page</a>.</p>
+    <p>Feel free to reach out on any of my social platforms listed on the <a href="/socials/">socials page</a>.</p>
   </div>
 </div>

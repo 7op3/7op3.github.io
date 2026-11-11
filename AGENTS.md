@@ -1,22 +1,17 @@
 # Personal Site Development Guide
 
-This is a Jekyll-based personal site with a custom Web 2.0 skeuomorphic theme.
+This is an Eleventy-based personal site with a hand-authored CSS theme
+("modern with retro anchors"). Node only — no Ruby, no build step for CSS.
 
 ## Development Setup
 
 ### Prerequisites
-- Ruby (for Jekyll)
-- Node.js (for Cloudflare Worker development)
-- Bundler (`gem install bundler`)
+- Node.js (for Eleventy and the Cloudflare Worker)
 - Pre-commit (optional, for code quality checks)
 
 ### Installation
 
 ```bash
-# Install Ruby dependencies
-bundle install
-
-# Install Node dependencies
 npm install
 
 # Install pre-commit hooks (optional)
@@ -26,118 +21,67 @@ pre-commit install
 
 ## Development Commands
 
-### Running the Site
-
 ```bash
-# Using npm
-npm run dev
-
-# Using bundle directly
-bundle exec jekyll serve --livereload
-```
-
-The site will be available at `http://localhost:4000`.
-
-### Building
-
-```bash
-# Build the site
-npm run build
-
-# Or directly
-bundle exec jekyll build
-```
-
-### Cleaning
-
-```bash
-# Clean build artifacts
-npm run clean
-
-# Or directly
-bundle exec jekyll clean
-```
-
-### Cloudflare Worker (Last.fm Proxy)
-
-```bash
-# Run worker locally
-npm run worker:dev
-
-# Deploy worker
-npm run worker:deploy
-```
-
-Make sure to set the `LASTFM_API_KEY` secret in the Cloudflare dashboard.
-
-### Code Quality
-
-```bash
-# Run pre-commit hooks manually
-npm run lint
-
-# Or directly
-pre-commit run --all-files
+npm run dev          # build + dev server (watch mode)
+npm run build        # build to _site/
+npm run clean        # remove _site/
+npm run lint         # pre-commit hooks across all files
 ```
 
 ## Project Structure
 
-- `index.md` - Home page
-- `socials.md` - Social links page
-- `recs.md` - Recommendations page with AniList integration
-- `projects.md` - Projects portfolio
-- `contact.md` - Contact information
-- `anilist.md` - Full AniList collection page
-- `_includes/` - Reusable Jekyll includes
-- `_layouts/` - Page layouts
-- `assets/main.scss` - Main stylesheet with Web 2.0 theme
-- `assets/lastfm.js` - Last.fm widget script
-- `src/index.js` - Cloudflare Worker for Last.fm API proxy
-- `_data/anilist.json` - AniList data (updated by GitHub Actions)
-- `.github/workflows/update-anilist.yml` - AniList data update workflow
+- `site/` — the website input directory
+  - `index.md`, `socials.md`, `recs.md`, `projects.md`, `contact.md`, `anilist.md` — content pages
+  - `404.md` — not-found page, `feed.liquid` — Atom feed at `/feed.xml`
+  - `_layouts/` — `base.liquid` (shell), `home.liquid`, `page.liquid`
+  - `_includes/` — head, header, footer, sidebar, AniList partials
+  - `_data/anilist.json` — AniList data (updated by GitHub Actions)
+  - `assets/` — `main.css` (single hand-authored stylesheet), `lastfm.js`, favicons
+- `eleventy.config.mjs` — config, global site data, Liquid filter shims
+  (`relativeUrl`, `first_where` replaces Jekyll's `where_exp`, `jsonify`)
+- `src/index.js` — Cloudflare Worker for the Last.fm API proxy
+- `.github/workflows/deploy.yml` — Eleventy build → GitHub Pages deploy
+- `.github/workflows/update-anilist.yml` — refreshes AniList data every 6 hours
 
 ## Key Features
 
-- **Theme Toggle**: Light/dark mode with smooth transitions
-- **Mobile Navigation**: Responsive hamburger menu
-- **AniList Integration**: Auto-updated anime/manga lists with filtering
-- **Last.fm Widget**: Shows currently playing music
-- **Social Links**: Categorized social media links with icons
-- **Performance**: Lazy loading, preconnect, caching headers
-- **Accessibility**: Skip links, focus states, ARIA labels
-- **Security**: CSP headers, CORS restrictions
+- **Theme Toggle**: light/dark via CSS custom properties, persisted in
+  `localStorage`, falls back to OS preference, no flash of wrong theme
+- **Mobile Navigation**: hamburger menu below 760px
+- **AniList Integration**: auto-updated data with client-side filtering
+- **Last.fm Widget**: currently playing / last scrobbled track, with retry
+- **Retro anchors**: glossy header bar, tactile round theme toggle,
+  glossy pressable buttons, 88×31 sidebar buttons
+- **Accessibility**: skip link, focus states, ARIA labels, reduced-motion support
+- **Security**: CSP meta tag whitelisting the worker and AniList CDNs
+
+## Templates notes (Eleventy + Liquid)
+
+- Includes use `{% include "file.liquid", var: value %}` — LiquidJS includes
+  share the parent scope, so `site.*` / `build.*` globals are visible inside
+  them. `{% render %}` does NOT share scope; prefer `include`.
+- Site-wide values (title, description, socials, url) live in
+  `eleventy.config.mjs` under `addGlobalData("site", ...)`, not a data file.
+- To add a nav page: create `site/<name>.md` with front matter
+  (`layout: page.liquid`, `title`, `permalink`), then add the link in
+  `site/_includes/header.liquid`.
 
 ## Verification Steps
 
-When making changes, verify:
-
-1. **Local Testing**: Run `npm run dev` and check all pages
-2. **Theme Toggle**: Test light/dark mode switching
-3. **Mobile Responsiveness**: Test on various screen sizes
-4. **Dynamic Content**: Verify Last.fm and AniList widgets load correctly
-5. **Navigation**: Test all links and mobile menu
-6. **Accessibility**: Test keyboard navigation and screen readers
-7. **Code Quality**: Run `npm run lint` before committing
+1. `npm run dev` and check all pages
+2. Theme toggle: light/dark switch, persistence, no flash
+3. Mobile: hamburger menu opens/closes, layout collapses
+4. Last.fm and AniList widgets load (check console for CSP errors)
+5. All nav links and in-page links work; `/404.html` renders for unknown paths
+6. `npm run lint` before committing
 
 ## Troubleshooting
 
-### Jekyll Build Errors
-- Run `bundle update jekyll` to update Jekyll
-- Clear cache: `npm run clean`
-- Check Ruby version compatibility
-
-### Last.fm Widget Not Loading
-- Verify Cloudflare Worker is deployed
-- Check `LASTFM_API_KEY` secret is set
-- Check browser console for errors
-- Test worker endpoint directly
-
-### AniList Data Not Updating
-- Check GitHub Actions workflow status
-- Verify AniList API rate limits
-- Check `_data/anilist.json` file permissions
-
-### Pre-commit Hook Failures
-- Run `pre-commit run --all-files` to see all issues
-- Fix issues manually or let hooks auto-fix where possible
-- Skip hooks temporarily with `git commit --no-verify` (not recommended)
+- **Build fails with "duplicated else"** — an unclosed `{% if %}` in a Liquid
+  template; check nesting of if/else/endif.
+- **Assets 404 locally** — `site/assets` is copied via
+  `addPassthroughCopy({ "site/assets": "assets" })`; don't remove it.
+- **Last.fm widget not loading** — verify the worker is deployed and
+  `LASTFM_API_KEY` is set; test the worker endpoint directly.
+- **AniList data stale** — check the `update-anilist.yml` workflow runs;
+  it writes to `site/_data/anilist.json`.
