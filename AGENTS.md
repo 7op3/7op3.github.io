@@ -40,8 +40,20 @@ npm run lint         # pre-commit hooks across all files
 - `eleventy.config.mjs` — config, global site data, Liquid filter shims
   (`relativeUrl`, `first_where` replaces Jekyll's `where_exp`, `jsonify`)
 - `src/index.js` — Cloudflare Worker for the Last.fm API proxy
-- `.github/workflows/deploy.yml` — Eleventy build → GitHub Pages deploy
 - `.github/workflows/update-anilist.yml` — refreshes AniList data every 6 hours
+
+## Deploy
+
+The site is deployed with **Cloudflare Pages** (project `sevens`):
+
+- Pushes to `main` build and deploy automatically (build command
+  `npx @11ty/eleventy`, output `_site`)
+- Other branches get preview deployments; PR comments are enabled
+- The custom domain `seven.oops.wtf` is attached to the Pages project
+- The AniList data bot pushes to `main` every 6 hours, which also triggers
+  a production redeploy
+
+GitHub Actions is only used for the AniList data refresh, not deploys.
 
 ## Key Features
 

@@ -29,14 +29,20 @@ npm run lint       # run pre-commit hooks across all files
     `lastfm.js` (sidebar Listening widget), favicons
 - `src/index.js` — Cloudflare Worker proxying Last.fm for the Listening widget
 - `eleventy.config.mjs` — Eleventy config, global site data, Liquid filter shims
-- `.github/workflows/deploy.yml` — builds with Eleventy and deploys to GitHub Pages
 - `.github/workflows/update-anilist.yml` — refreshes `site/_data/anilist.json`
 
 ## Deploy
 
-Pushes to `main` build and deploy to GitHub Pages automatically via
-`.github/workflows/deploy.yml`. The AniList cron writes its data file and pushes;
-that push triggers a redeploy.
+The site is deployed with **Cloudflare Pages** (project `sevens`):
+
+- Pushes to `main` build and deploy automatically (build command
+  `npx @11ty/eleventy`, output `_site`)
+- Other branches get preview deployments; PR comments are enabled
+- The custom domain `seven.oops.wtf` is attached to the Pages project
+- The AniList data bot pushes to `main` every 6 hours, which also triggers
+  a production redeploy
+
+GitHub Actions is only used for the AniList data refresh, not deploys.
 
 ## Cloudflare Worker (Last.fm proxy)
 
