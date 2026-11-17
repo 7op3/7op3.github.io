@@ -58,6 +58,9 @@ jobs:
               const found = arr.find((i) => i.size === size && i['#text']) || arr.find((i) => i['#text']);
               return found ? found['#text'] : '';
             };
+            // Last.fm serves this placeholder for missing artwork (mostly artists/tracks)
+            const PLACEHOLDER_HASH = '2a96cbd8b46e442fc41c2b86b821562f';
+            const hasArt = (url) => Boolean(url) && !url.includes(PLACEHOLDER_HASH);
 
             async function safe(name, fn) {
               try {
@@ -80,39 +83,106 @@ jobs:
               return;
             }
 
+            const rawArtists = asArray(topArtists && topArtists.topartists && topArtists.topartists.artist);
+            const rawAlbums = asArray(topAlbums && topAlbums.topalbums && topAlbums.topalbums.album);
+            const rawTracks = asArray(topTracks && topTracks.toptracks && topTracks.toptracks.track);
+            const rawRecent = asArray(recent && recent.recenttracks && recent.recenttracks.track);
+
+            // Last.fm rarely has artist art; top up from Deezer (artists/tracks,
+            // keyed by name) and Cover Art Archive (album releases, via MBID).
+            const artistNames = new Set();
+            const wantArtist = (name, images) => {
+              if (name && !hasArt(pickImage(images, 'large'))) artistNames.add(name);
+            };
+            rawArtists.forEach((a) => wantArtist(a.name, a.image));
+            rawTracks.forEach((t) => wantArtist(artistName(t.artist), t.image));
+
+            const releaseMbids = new Set();
+            rawAlbums.forEach((a) => {
+              if (a.mbid && !hasArt(pickImage(a.image, 'large'))) releaseMbids.add(a.mbid);
+            });
+
+            const normName = (s) => String(s || '').trim().toLowerCase();
+            const artistArt = {};
+            const names = [...artistNames];
+            for (let i = 0; i < names.length; i += 5) {
+              await Promise.all(names.slice(i, i + 5).map(async (name) => {
+                try {
+                  const res = await fetch(`https://api.deezer.com/search/artist?q=${encodeURIComponent(name)}&limit=5`);
+                  if (!res.ok) return;
+                  const list = asArray((await res.json()).data);
+                  const match = list.find((a) => normName(a.name) === normName(name)) || list[0];
+                  const pic = match && (match.picture_big || match.picture_medium || match.picture_small);
+                  if (pic) artistArt[normName(name)] = pic;
+                } catch (err) {
+                  // No art available; the item falls back to the placeholder tile
+                }
+              }));
+            }
+
+            const releaseArt = {};
+            const mbids = [...releaseMbids];
+            for (let i = 0; i < mbids.length; i += 5) {
+              await Promise.all(mbids.slice(i, i + 5).map(async (mbid) => {
+                try {
+                  const res = await fetch(`https://coverartarchive.org/release/${mbid}/front-250`, { redirect: 'manual' });
+                  const loc = res.headers.get('location');
+                  if (res.status >= 300 && res.status < 400 && loc) {
+                    releaseArt[mbid] = loc.startsWith('http') ? loc : `https://coverartarchive.org${loc}`;
+                  } else if (res.status === 200) {
+                    releaseArt[mbid] = `https://coverartarchive.org/release/${mbid}/front-250`;
+                  }
+                } catch (err) {
+                  // No art available; the item falls back to the placeholder tile
+                }
+              }));
+            }
+            console.log(`Art lookups: ${Object.keys(artistArt).length}/${names.length} artists, ${Object.keys(releaseArt).length}/${mbids.length} releases`);
+
+            const artForArtist = (name, images) => {
+              const lfm = pickImage(images, 'large');
+              if (hasArt(lfm)) return lfm;
+              return artistArt[normName(name)] || '';
+            };
+            const artForRelease = (mbid, images) => {
+              const lfm = pickImage(images, 'large');
+              if (hasArt(lfm)) return lfm;
+              return releaseArt[mbid] || '';
+            };
+
             const data = {
               fetchedAt: new Date().toISOString(),
               user,
               profileUrl: `https://www.last.fm/user/${user}`,
               stats: info && info.user ? { playcount: toInt(info.user.playcount) } : null,
-              topArtists: asArray(topArtists && topArtists.topartists && topArtists.topartists.artist).map((a) => ({
+              topArtists: rawArtists.map((a) => ({
                 name: a.name || '',
                 plays: toInt(a.playcount),
                 url: a.url || '',
-                image: pickImage(a.image, 'large')
+                image: artForArtist(a.name, a.image)
               })),
-              topAlbums: asArray(topAlbums && topAlbums.topalbums && topAlbums.topalbums.album).map((a) => ({
+              topAlbums: rawAlbums.map((a) => ({
                 name: a.name || '',
                 artist: artistName(a.artist),
                 plays: toInt(a.playcount),
                 url: a.url || '',
-                image: pickImage(a.image, 'large')
+                image: artForRelease(a.mbid, a.image)
               })),
-              topTracks: asArray(topTracks && topTracks.toptracks && topTracks.toptracks.track).map((t) => ({
+              topTracks: rawTracks.map((t) => ({
                 name: t.name || '',
                 artist: artistName(t.artist),
                 plays: toInt(t.playcount),
                 url: t.url || '',
-                image: pickImage(t.image, 'large')
+                image: artForArtist(artistName(t.artist), t.image)
               })),
-              recentTracks: asArray(recent && recent.recenttracks && recent.recenttracks.track).map((t) => {
+              recentTracks: rawRecent.map((t) => {
                 const d = t.date || {};
                 return {
                   name: t.name || '',
                   artist: artistName(t.artist),
                   album: (t.album && t.album['#text']) || '',
                   url: t.url || `https://www.last.fm/user/${user}`,
-                  image: pickImage(t.image, 'large'),
+                  image: hasArt(pickImage(t.image, 'large')) ? pickImage(t.image, 'large') : '',
                   date: d['#text'] || '',
                   uts: toInt(d.uts),
                   nowPlaying: t['@attr'] && t['@attr'].nowplaying === 'true'
