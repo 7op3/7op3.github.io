@@ -1,0 +1,132 @@
+name: Update Last.fm data
+
+on:
+  schedule:
+    - cron: "30 */6 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "lastfm-data"
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Fetch Last.fm data and update site/_data/lastfm.json
+        uses: actions/github-script@v7
+        env:
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+          LASTFM_USERNAME: ${{ secrets.LASTFM_USERNAME }}
+        with:
+          script: |
+            const fs = require('fs');
+            const apiKey = process.env.LASTFM_API_KEY;
+            const user = process.env.LASTFM_USERNAME || 'ropeburns';
+
+            if (!apiKey) {
+              console.log('LASTFM_API_KEY secret is not set, skipping update');
+              return;
+            }
+
+            const BASE = 'https://ws.audioscrobbler.com/2.0/';
+
+            async function lfm(method, extra = {}) {
+              const params = new URLSearchParams({ method, user, api_key: apiKey, format: 'json', ...extra });
+              const res = await fetch(`${BASE}?${params}`);
+              if (!res.ok) throw new Error(`HTTP ${res.status}`);
+              const json = await res.json();
+              if (json.error) throw new Error(json.message || `error ${json.error}`);
+              return json;
+            }
+
+            const asArray = (x) => (Array.isArray(x) ? x : x ? [x] : []);
+            const toInt = (x) => parseInt(x, 10) || 0;
+            const artistName = (a) => {
+              if (!a) return '';
+              if (typeof a === 'string') return a;
+              return a.name || a['#text'] || '';
+            };
+            const pickImage = (images, size) => {
+              const arr = asArray(images);
+              const found = arr.find((i) => i.size === size && i['#text']) || arr.find((i) => i['#text']);
+              return found ? found['#text'] : '';
+            };
+
+            async function safe(name, fn) {
+              try {
+                return await fn();
+              } catch (err) {
+                console.log(`${name} failed: ${err.message}`);
+                return null;
+              }
+            }
+
+            // Sequential calls: ~5 requests every 6 hours, far below Last.fm's rate limit
+            const info = await safe('user.getinfo', () => lfm('user.getinfo'));
+            const topArtists = await safe('user.gettopartists', () => lfm('user.gettopartists', { period: 'overall', limit: '50' }));
+            const topAlbums = await safe('user.gettopalbums', () => lfm('user.gettopalbums', { period: 'overall', limit: '50' }));
+            const topTracks = await safe('user.gettoptracks', () => lfm('user.gettoptracks', { period: 'overall', limit: '50' }));
+            const recent = await safe('user.getrecenttracks', () => lfm('user.getrecenttracks', { limit: '50' }));
+
+            if (!info && !topArtists && !topAlbums && !topTracks && !recent) {
+              console.log('All Last.fm requests failed, keeping existing data');
+              return;
+            }
+
+            const data = {
+              fetchedAt: new Date().toISOString(),
+              user,
+              profileUrl: `https://www.last.fm/user/${user}`,
+              stats: info && info.user ? { playcount: toInt(info.user.playcount) } : null,
+              topArtists: asArray(topArtists && topArtists.topartists && topArtists.topartists.artist).map((a) => ({
+                name: a.name || '',
+                plays: toInt(a.playcount),
+                url: a.url || '',
+                image: pickImage(a.image, 'large')
+              })),
+              topAlbums: asArray(topAlbums && topAlbums.topalbums && topAlbums.topalbums.album).map((a) => ({
+                name: a.name || '',
+                artist: artistName(a.artist),
+                plays: toInt(a.playcount),
+                url: a.url || '',
+                image: pickImage(a.image, 'large')
+              })),
+              topTracks: asArray(topTracks && topTracks.toptracks && topTracks.toptracks.track).map((t) => ({
+                name: t.name || '',
+                artist: artistName(t.artist),
+                plays: toInt(t.playcount),
+                url: t.url || '',
+                image: pickImage(t.image, 'large')
+              })),
+              recentTracks: asArray(recent && recent.recenttracks && recent.recenttracks.track).map((t) => {
+                const d = t.date || {};
+                return {
+                  name: t.name || '',
+                  artist: artistName(t.artist),
+                  album: (t.album && t.album['#text']) || '',
+                  url: t.url || `https://www.last.fm/user/${user}`,
+                  image: pickImage(t.image, 'large'),
+                  date: d['#text'] || '',
+                  uts: toInt(d.uts),
+                  nowPlaying: t['@attr'] && t['@attr'].nowplaying === 'true'
+                };
+              })
+            };
+
+            fs.writeFileSync('site/_data/lastfm.json', JSON.stringify(data, null, 2) + '\n');
+            console.log('Last.fm data updated successfully');
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add site/_data/lastfm.json
+          git commit -m "Update Last.fm data" || true
+          git push

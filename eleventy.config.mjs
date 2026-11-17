@@ -46,6 +46,11 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter("jsonify", (obj) => JSON.stringify(obj));
 
+  eleventyConfig.addFilter("number_format", (n) => {
+    const num = Number(n);
+    return Number.isFinite(num) ? num.toLocaleString("en-US") : n;
+  });
+
   return {
     dir: {
       input: "site",

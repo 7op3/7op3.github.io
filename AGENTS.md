@@ -31,16 +31,17 @@ npm run lint         # pre-commit hooks across all files
 ## Project Structure
 
 - `site/` — the website input directory
-  - `index.md`, `socials.md`, `recs.md`, `projects.md`, `contact.md`, `anilist.md` — content pages
+  - `index.md`, `socials.md`, `recs.md`, `projects.md`, `contact.md`, `anilist.md`, `lastfm.md` — content pages
   - `404.md` — not-found page, `feed.liquid` — Atom feed at `/feed.xml`
   - `_layouts/` — `base.liquid` (shell), `home.liquid`, `page.liquid`
-  - `_includes/` — head, header, footer, sidebar, AniList partials
-  - `_data/anilist.json` — AniList data (updated by GitHub Actions)
+  - `_includes/` — head, header, footer, sidebar, AniList/Last.fm item partials
+  - `_data/anilist.json`, `_data/lastfm.json` — external data (updated by GitHub Actions)
   - `assets/` — `main.css` (single hand-authored stylesheet), `lastfm.js`, favicons
 - `eleventy.config.mjs` — config, global site data, Liquid filter shims
   (`relativeUrl`, `first_where` replaces Jekyll's `where_exp`, `jsonify`)
 - `src/index.js` — Cloudflare Worker for the Last.fm API proxy
 - `.github/workflows/update-anilist.yml` — refreshes AniList data every 6 hours
+- `.github/workflows/update-lastfm.yml` — refreshes Last.fm data every 6 hours
 
 ## Deploy
 
@@ -50,10 +51,10 @@ The site is deployed with **Cloudflare Pages** (project `sevens`):
   `npx @11ty/eleventy`, output `_site`)
 - Other branches get preview deployments; PR comments are enabled
 - The custom domain `seven.oops.wtf` is attached to the Pages project
-- The AniList data bot pushes to `main` every 6 hours, which also triggers
-  a production redeploy
+- The data bots (AniList, Last.fm) push to `main` every 6 hours, which also
+  triggers a production redeploy
 
-GitHub Actions is only used for the AniList data refresh, not deploys.
+GitHub Actions is only used for the AniList/Last.fm data refreshes, not deploys.
 
 ## Key Features
 
@@ -62,6 +63,9 @@ GitHub Actions is only used for the AniList data refresh, not deploys.
 - **Mobile Navigation**: hamburger menu below 760px
 - **AniList Integration**: auto-updated data with client-side filtering
 - **Last.fm Widget**: currently playing / last scrobbled track, with retry
+- **Last.fm page**: top artists/albums/tracks + recent plays, rendered
+  statically from `_data/lastfm.json` (no runtime API calls, so no
+  rate-limit exposure)
 - **Retro anchors**: glossy header bar, tactile round theme toggle,
   glossy pressable buttons, 88×31 sidebar buttons
 - **Accessibility**: skip link, focus states, ARIA labels, reduced-motion support
@@ -95,5 +99,7 @@ GitHub Actions is only used for the AniList data refresh, not deploys.
   `addPassthroughCopy({ "site/assets": "assets" })`; don't remove it.
 - **Last.fm widget not loading** — verify the worker is deployed and
   `LASTFM_API_KEY` is set; test the worker endpoint directly.
-- **AniList data stale** — check the `update-anilist.yml` workflow runs;
-  it writes to `site/_data/anilist.json`.
+- **AniList/Last.fm data stale** — check the `update-anilist.yml` /
+  `update-lastfm.yml` workflows run; they write to `site/_data/*.json`.
+  The Last.fm workflow needs `LASTFM_API_KEY` (and optionally
+  `LASTFM_USERNAME`) repo secrets; it skips silently without the key.

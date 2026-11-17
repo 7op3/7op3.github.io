@@ -1053,6 +1053,23 @@ table {
   white-space: nowrap;
 }
 
+/* ---- Last.fm ---- */
+
+.lastfm-list { counter-reset: lastfm-rank; }
+
+.lastfm-item { counter-increment: lastfm-rank; }
+
+.lastfm-item::before {
+  content: counter(lastfm-rank);
+  flex-shrink: 0;
+  align-self: center;
+  min-width: 1.5em;
+  text-align: right;
+  font-size: 0.85em;
+  font-weight: 700;
+  color: var(--muted);
+}
+
 /* ---- Recommendations (recs page shelf) ---- */
 
 .recommendations {
