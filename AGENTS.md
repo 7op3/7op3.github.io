@@ -36,7 +36,9 @@ npm run lint         # pre-commit hooks across all files
   - `_layouts/` — `base.liquid` (shell), `home.liquid`, `page.liquid`
   - `_includes/` — head, header, footer, sidebar, AniList/Last.fm item partials
   - `_data/anilist.json`, `_data/lastfm.json` — external data (updated by GitHub Actions)
-  - `assets/` — `main.css` (single hand-authored stylesheet), `lastfm.js`, favicons
+  - `assets/` — `main.css` (single hand-authored stylesheet), `lastfm.js`,
+    `pagination.js` (show-more pagination for `/lastfm/` + `/anilist/` lists),
+    favicons
 - `eleventy.config.mjs` — config, global site data, Liquid filter shims
   (`relativeUrl`, `first_where` replaces Jekyll's `where_exp`, `jsonify`)
 - `src/index.js` — Cloudflare Worker for the Last.fm API proxy

@@ -1053,6 +1053,11 @@ table {
   white-space: nowrap;
 }
 
+.pagination-btn {
+  display: block;
+  margin: 10px auto 0;
+}
+
 /* ---- Last.fm ---- */
 
 .lastfm-list { counter-reset: lastfm-rank; }

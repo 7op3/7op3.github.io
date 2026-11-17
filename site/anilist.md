@@ -93,6 +93,7 @@ Anime and manga from my AniList profile, organized by status.
   {%- endif %}
 </div>
 
+<script src="/assets/pagination.js" defer></script>
 <script>
 (function () {
   // Statistics calculation

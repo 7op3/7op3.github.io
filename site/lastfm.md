@@ -73,6 +73,7 @@ My listening history from <a href="{{ lastfm.profileUrl }}">Last.fm</a>, refresh
   {%- endif %}
 </div>
 
+<script src="/assets/pagination.js" defer></script>
 <script>
 (function () {
   function calculateStats() {
