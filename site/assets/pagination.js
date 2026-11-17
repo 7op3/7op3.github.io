@@ -29,7 +29,8 @@
       apply();
     });
 
-    list.after(btn);
+    // Inside the list so section filters hide it along with the items
+    list.appendChild(btn);
     apply();
   });
 })();
