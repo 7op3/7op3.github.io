@@ -26,51 +26,47 @@ My listening history from <a href="{{ lastfm.profileUrl }}">Last.fm</a>, refresh
       {%- assign has_data = true -%}
     {%- endif -%}
   {%- endif -%}
-
-  {%- if has_data %}
-    {%- if lastfm.topArtists.size > 0 %}
+  {%- if has_data -%}
+    {%- if lastfm.topArtists.size > 0 -%}
       <h3 class="anilist-section-title">Top Artists</h3>
       <div class="anilist-list lastfm-list" data-type="artists">
-        {%- for artist in lastfm.topArtists %}
-          {%- capture meta %}{{ artist.plays | number_format }} plays{% endcapture %}
+        {%- for artist in lastfm.topArtists -%}
+          {%- capture meta %}{{ artist.plays | number_format }} plays{% endcapture -%}
           {%- include "lastfm-item.liquid", item: artist, meta: meta -%}
-        {%- endfor %}
+        {%- endfor -%}
       </div>
-    {%- endif %}
-
-    {%- if lastfm.topAlbums.size > 0 %}
+    {%- endif -%}
+    {%- if lastfm.topAlbums.size > 0 -%}
       <h3 class="anilist-section-title">Top Albums</h3>
       <div class="anilist-list lastfm-list" data-type="albums">
-        {%- for album in lastfm.topAlbums %}
-          {%- capture meta %}by {{ album.artist }} · {{ album.plays | number_format }} plays{% endcapture %}
+        {%- for album in lastfm.topAlbums -%}
+          {%- capture meta %}by {{ album.artist }} · {{ album.plays | number_format }} plays{% endcapture -%}
           {%- include "lastfm-item.liquid", item: album, meta: meta -%}
-        {%- endfor %}
+        {%- endfor -%}
       </div>
-    {%- endif %}
-
-    {%- if lastfm.topTracks.size > 0 %}
+    {%- endif -%}
+    {%- if lastfm.topTracks.size > 0 -%}
       <h3 class="anilist-section-title">Top Tracks</h3>
       <div class="anilist-list lastfm-list" data-type="tracks">
-        {%- for track in lastfm.topTracks %}
-          {%- capture meta %}{{ track.artist }} · {{ track.plays | number_format }} plays{% endcapture %}
+        {%- for track in lastfm.topTracks -%}
+          {%- capture meta %}{{ track.artist }} · {{ track.plays | number_format }} plays{% endcapture -%}
           {%- include "lastfm-item.liquid", item: track, meta: meta -%}
-        {%- endfor %}
+        {%- endfor -%}
       </div>
-    {%- endif %}
-
-    {%- if lastfm.recentTracks.size > 0 %}
+    {%- endif -%}
+    {%- if lastfm.recentTracks.size > 0 -%}
       <h3 class="anilist-section-title">Recently Played</h3>
       <div class="anilist-list lastfm-list" data-type="recent">
-        {%- for track in lastfm.recentTracks %}
-          {%- capture meta %}{{ track.artist }}{% if track.album %} — {{ track.album }}{% endif %}{% endcapture %}
-          {%- capture submeta %}{{ track.date }}{% endcapture %}
+        {%- for track in lastfm.recentTracks -%}
+          {%- capture meta %}{{ track.artist }}{% if track.album %} — {{ track.album }}{% endif %}{% endcapture -%}
+          {%- capture submeta %}{{ track.date }}{% endcapture -%}
           {%- include "lastfm-item.liquid", item: track, meta: meta, submeta: submeta -%}
-        {%- endfor %}
+        {%- endfor -%}
       </div>
-    {%- endif %}
-  {%- else %}
+    {%- endif -%}
+  {%- else -%}
     <p class="anilist-empty">Last.fm data is currently unavailable. It refreshes every 6 hours.</p>
-  {%- endif %}
+  {%- endif -%}
 </div>
 
 <script src="/assets/pagination.js" defer></script>

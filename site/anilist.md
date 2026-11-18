@@ -99,7 +99,7 @@ Anime and manga from my AniList profile, organized by status.
   // Statistics calculation
   function calculateStats() {
     try {
-      const anilistData = {{ anilist | jsonify }};
+      const anilistData = {{ anilist | jsonify | default: "null" }};
       if (!anilistData || !anilistData.data) {
         const statsContainer = document.getElementById('anilist-stats');
         if (statsContainer) {

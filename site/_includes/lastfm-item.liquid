@@ -5,18 +5,17 @@ Expects (passed via {% include %}):
   - meta: primary meta line (plays, artist, album)
   - submeta: optional secondary meta line (date)
 {% endcomment %}
-
-{% if item and item.name %}
+{%- if item and item.name %}
 <article class="anilist-item lastfm-item">
-  {% if item.image %}
-    <img class="anilist-item-art" src="{{ item.image }}" alt="{{ item.name | escape }}" width="56" height="56" loading="lazy" fetchpriority="low">
-  {% else %}
-    <div class="anilist-item-art anilist-item-art-empty">&#9834;</div>
-  {% endif %}
-  <div class="anilist-item-details">
-    <p class="anilist-item-title"><a href="{{ item.url }}">{{ item.name | escape }}</a></p>
-    {% if meta %}<p class="anilist-item-meta">{{ meta | escape }}</p>{% endif %}
-    {% if submeta %}<p class="anilist-item-meta">{{ submeta | escape }}</p>{% endif %}
-  </div>
+{%- if item.image and item.image != '' %}
+<img class="anilist-item-art" src="{{ item.image }}" alt="{{ item.name | escape }}" width="56" height="56" loading="lazy" fetchpriority="low">
+{%- else %}
+<div class="anilist-item-art anilist-item-art-empty">&#9834;</div>
+{%- endif %}
+<div class="anilist-item-details">
+<p class="anilist-item-title"><a href="{{ item.url }}">{{ item.name | escape }}</a></p>
+{% if meta %}<p class="anilist-item-meta">{{ meta | escape }}</p>{% endif %}
+{% if submeta %}<p class="anilist-item-meta">{{ submeta | escape }}</p>{% endif %}
+</div>
 </article>
-{% endif %}
+{%- endif -%}
