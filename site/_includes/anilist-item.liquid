@@ -7,15 +7,15 @@ Expects (passed via {% render %}):
 {%- if media %}
 <article class="anilist-item">
 {%- if media.coverImage and media.coverImage.large %}
-<img class="anilist-item-art" src="{{ media.coverImage.large }}" alt="{{ media.title.romaji | default: media.title.english | default: 'Unknown' }}" width="48" height="48" loading="lazy" fetchpriority="low">
+<img class="anilist-item-art" src="{{ media.coverImage.large | escape }}" alt="{{ media.title.romaji | default: media.title.english | default: 'Unknown' | escape }}" width="48" height="48" loading="lazy" fetchpriority="low">
 {%- else %}
 <div class="anilist-item-art anilist-item-art-empty">LP</div>
 {%- endif %}
 <div class="anilist-item-details">
-<p class="anilist-item-title"><a href="https://www.anilist.co/media/{{ media.id }}">{{ media.title.romaji | default: media.title.english | default: 'Unknown' }}</a></p>
-<p class="anilist-item-meta">{{ entry.status | capitalize }}{% if entry.score %} | Score: {{ entry.score }}{% endif %}{% if entry.progress %} | {{ entry.progress }}{% endif %}</p>
+<p class="anilist-item-title"><a href="https://www.anilist.co/media/{{ media.id | escape }}">{{ media.title.romaji | default: media.title.english | default: 'Unknown' | escape }}</a></p>
+<p class="anilist-item-meta">{{ entry.status | capitalize | escape }}{% if entry.score %} | Score: {{ entry.score | escape }}{% endif %}{% if entry.progress %} | {{ entry.progress | escape }}{% endif %}</p>
 {%- if media.description %}
-<p class="anilist-item-desc">{{ media.description | strip_html | truncate: 150 }}</p>
+<p class="anilist-item-desc">{{ media.description | strip_html | truncate: 150 | escape }}</p>
 {%- endif %}
 </div>
 </article>
