@@ -1,8 +1,8 @@
 /* ============================================================
    Amelia's personal site — "modern with retro anchors"
    One stylesheet, hand-authored. Light/dark via custom
-   properties; the [data-theme] override block is the only place
-   colors change.
+   properties; theme colours change only in the [data-theme]
+   override block.
    ============================================================ */
 
 /* ---- Tokens ---- */
@@ -20,15 +20,15 @@
   --on-accent:     #ffffff;
 
   /* Retro anchor: the glossy header + section bars */
-  --header-grad: linear-gradient(180deg, #4d9fe8 0%, #3d7fd0 60%, #3673c2 100%);
-  --bar-grad:    linear-gradient(180deg, #569fe2 0%, #4077c6 100%);
+  --header-grad: linear-gradient(180deg, #306ab0 0%, #285d9e 60%, #24538e 100%);
+  --bar-grad:    linear-gradient(180deg, #306ab0 0%, #24538e 100%);
   --bar-border:  #2f5ea8;
 
-  --button-grad:    linear-gradient(180deg, #5ba3ec 0%, #3d7fd0 100%);
+  --button-grad:    linear-gradient(180deg, #306ab0 0%, #24538e 100%);
   --button-border:  #2f5ea8;
   --rss-grad:       linear-gradient(180deg, #ffab5e 0%, #f27717 100%);
   --rss-border:     #c25c0c;
-  --toggle-grad:    linear-gradient(180deg, #55a2ea 0%, #3a78c9 100%);
+  --toggle-grad:    linear-gradient(180deg, #306ab0 0%, #24538e 100%);
 
   --shadow-card:    0 1px 2px rgba(15, 23, 42, 0.07), 0 2px 8px rgba(15, 23, 42, 0.05);
   --shadow-card-hover: 0 4px 14px rgba(15, 23, 42, 0.13);
@@ -659,91 +659,6 @@ table {
   border-color: var(--rss-border);
 }
 
-/* 88x31 buttons (retro anchor) */
-
-.buttons-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.button-88x31 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 88px;
-  height: 31px;
-  padding: 0 7px;
-  text-align: center;
-  text-decoration: none;
-  color: #fff;
-  background: linear-gradient(180deg, #22304a 0%, #131b2b 100%);
-  border: 1px solid #0a0f19;
-  border-radius: 2px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
-  image-rendering: pixelated;
-
-  &:hover {
-    text-decoration: none;
-    filter: brightness(1.15);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 1px;
-  }
-}
-
-.button-88x31-name {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  line-height: 1.15;
-}
-
-.button-88x31-sub {
-  font-size: 8px;
-  line-height: 1.2;
-  color: #8fb7ef;
-}
-
-.buttons-note {
-  margin-top: 8px;
-  font-size: 12px;
-  color: var(--muted);
-}
-
-/* ---- Footer ---- */
-
-.site-footer {
-  padding: 18px 0 22px;
-  border-top: 1px solid var(--border);
-  background: var(--panel);
-}
-
-.footer-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 4px 16px;
-}
-
-.footer-copy,
-.footer-stamp {
-  margin: 0;
-  font-size: 13.5px;
-  color: var(--muted);
-}
-
-.rss-link {
-  font-weight: 650;
-  color: #f27717;
-
-  [data-theme="dark"] & { color: #f2914a; }
-
-  &:hover { text-decoration-thickness: 2px; }
-}
 
 /* ---- Projects ---- */
 

@@ -12,14 +12,6 @@ Welcome to my little corner of the internet.
 
 I'm a developer and creative enthusiast who enjoys building things on the web. When I'm not coding, you can usually find me watching anime, reading manga, or discovering new music. This site is my personal space to share what I'm working on, what I'm enjoying, and where you can find me around the internet.
 
-## What's here
-
-- [Socials](/socials/) — where to find me around the web
-- [Recommendations](/recs/) — sites, tools, and other things I think are worth your time
-- [Projects](/projects/) — things I've built
-- [Contact](/contact/) — how to get in touch
-- [AniList](/anilist/) — my anime and manga collection
-
 ## Latest activity
 
 <div class="latest-activity">
