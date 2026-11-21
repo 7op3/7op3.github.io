@@ -67,8 +67,8 @@ server-side state, no forms. Trust boundaries:
 
 ## Existing controls
 
-- CSP meta tag in `site/_includes/head.liquid` (note: allows `'unsafe-inline'`
-  and `'unsafe-eval'` for scripts, so it does not stop inline-script injection).
+- CSP meta tag in `site/_includes/head.liquid`: `script-src` allows
+  `'unsafe-inline'`, so it does not stop inline-script injection.
 - Liquid `escape` on most text outputs; `lastfm.js` uses `textContent`/DOM APIs,
   not `innerHTML`.
 - Worker: GET/OPTIONS only, fixed upstream URL/user, generic error responses.
