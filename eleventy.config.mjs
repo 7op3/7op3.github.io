@@ -44,7 +44,18 @@ export default function (eleventyConfig) {
     return arr.find((item) => item && item[key] === value) || null;
   });
 
-  eleventyConfig.addFilter("jsonify", (obj) => JSON.stringify(obj));
+  // Safe for inline <script>: escapes chars that could close the tag or break JS parsing.
+  const jsonEscapes = {
+    "<": "\\u003c",
+    ">": "\\u003e",
+    "&": "\\u0026",
+    "\u2028": "\\u2028",
+    "\u2029": "\\u2029",
+  };
+  eleventyConfig.addFilter("jsonify", (obj) => {
+    const json = JSON.stringify(obj);
+    return json === undefined ? json : json.replace(/[<>&\u2028\u2029]/g, (c) => jsonEscapes[c]);
+  });
 
   eleventyConfig.addFilter("number_format", (n) => {
     const num = Number(n);

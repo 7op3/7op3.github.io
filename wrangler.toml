@@ -8,3 +8,12 @@ enabled = true
 [observability.logs]
 invocation_logs = true
 head_sampling_rate = 1
+
+# Per-client limit on proxy requests, keyed on CF-Connecting-IP in src/index.js.
+[[ratelimits]]
+name = "RATE_LIMITER"
+namespace_id = "1001"
+
+  [ratelimits.simple]
+  limit = 60
+  period = 60

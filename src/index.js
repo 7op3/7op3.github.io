@@ -1,13 +1,17 @@
+const CACHE_TTL = 30;
+
+const respond = (data, jsonHeaders, ctx, cache, cacheKey) => {
+  const body = JSON.stringify(data);
+  ctx.waitUntil(cache.put(cacheKey, new Response(body, {
+    headers: { 'Content-Type': 'application/json', 'Cache-Control': `public, max-age=${CACHE_TTL}` }
+  })));
+  return new Response(body, {
+    headers: { ...jsonHeaders, 'Cache-Control': `public, max-age=${CACHE_TTL}` }
+  });
+};
+
 export default {
-  async fetch(request, env) {
-    // Rate limiting using Cloudflare's built-in rate limiting
-    const clientIP = request.headers.get('CF-Connecting-IP');
-    const rateLimitKey = `lastfm:${clientIP}`;
-
-    // Simple in-memory rate limiting (for production, use KV or Durable Objects)
-    const limit = 60; // 60 requests per minute
-    const window = 60; // 60 seconds
-
+  async fetch(request, env, ctx) {
     // CORS configuration - restrict to specific origins
     const allowedOrigins = [
       'https://seven.oops.wtf',
@@ -34,6 +38,29 @@ export default {
     // Only allow GET requests
     if (request.method !== 'GET') {
       return new Response('Method not allowed', { status: 405, headers: corsHeaders });
+    }
+
+    const jsonHeaders = { ...corsHeaders, 'Content-Type': 'application/json' };
+
+    if (env.RATE_LIMITER) {
+      const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
+      const { success } = await env.RATE_LIMITER.limit({ key: `lastfm:${clientIP}` });
+      if (!success) {
+        return new Response(JSON.stringify({ available: false }), {
+          status: 429,
+          headers: { ...jsonHeaders, 'Retry-After': '60' }
+        });
+      }
+    }
+
+    // Shared edge cache so repeated GETs don't each spend the owner's Last.fm quota.
+    const cache = caches.default;
+    const cacheKey = new Request(new URL('/__lastfm-recent', request.url).toString());
+    const cached = await cache.match(cacheKey);
+    if (cached) {
+      return new Response(cached.body, {
+        headers: { ...jsonHeaders, 'Cache-Control': `public, max-age=${CACHE_TTL}` }
+      });
     }
 
     const apiKey = env.LASTFM_API_KEY;
@@ -67,9 +94,7 @@ export default {
       const track = Array.isArray(tracks) ? tracks[0] : tracks;
 
       if (!track || !track.name || !track.artist) {
-        return new Response(JSON.stringify({ available: false }), {
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-        });
+        return respond({ available: false }, jsonHeaders, ctx, cache, cacheKey);
       }
 
       const artist = track.artist?.['#text'] || track.artist?.name || '';
@@ -89,19 +114,10 @@ export default {
         timestamp: track.date?.uts || ''
       };
 
-      // Cache for 30 seconds to reduce API calls
-      return new Response(JSON.stringify(data), {
-        headers: {
-          ...corsHeaders,
-          'Content-Type': 'application/json',
-          'Cache-Control': 'public, max-age=30'
-        }
-      });
+      return respond(data, jsonHeaders, ctx, cache, cacheKey);
     } catch (error) {
       console.error('Last.fm proxy error:', error);
-      return new Response(JSON.stringify({ available: false }), {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-      });
+      return respond({ available: false }, jsonHeaders, ctx, cache, cacheKey);
     }
   }
 }
