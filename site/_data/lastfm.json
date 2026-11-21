@@ -1,9 +1,9 @@
 {
-  "fetchedAt": "2026-11-21T07:37:17.226Z",
+  "fetchedAt": "2026-11-21T19:40:52.195Z",
   "user": "ropeburns",
   "profileUrl": "https://www.last.fm/user/ropeburns",
   "stats": {
-    "playcount": 85947
+    "playcount": 85963
   },
   "topArtists": [
     {
@@ -32,13 +32,13 @@
     },
     {
       "name": "Yuke",
-      "plays": 2826,
+      "plays": 2827,
       "url": "https://www.last.fm/music/Yuke",
       "image": ""
     },
     {
       "name": "kasper gem",
-      "plays": 2507,
+      "plays": 2509,
       "url": "https://www.last.fm/music/kasper+gem",
       "image": ""
     },
@@ -50,19 +50,19 @@
     },
     {
       "name": "d0llywood1",
-      "plays": 2440,
+      "plays": 2441,
       "url": "https://www.last.fm/music/d0llywood1",
       "image": ""
     },
     {
       "name": "Che",
-      "plays": 2394,
+      "plays": 2395,
       "url": "https://www.last.fm/music/Che",
       "image": ""
     },
     {
       "name": "heartstopmiami",
-      "plays": 2378,
+      "plays": 2379,
       "url": "https://www.last.fm/music/heartstopmiami",
       "image": ""
     },
@@ -74,13 +74,13 @@
     },
     {
       "name": "osquinn",
-      "plays": 1723,
+      "plays": 1725,
       "url": "https://www.last.fm/music/osquinn",
       "image": ""
     },
     {
       "name": "ksuuvi",
-      "plays": 1715,
+      "plays": 1716,
       "url": "https://www.last.fm/music/ksuuvi",
       "image": ""
     },
@@ -92,7 +92,7 @@
     },
     {
       "name": "blxty",
-      "plays": 1397,
+      "plays": 1398,
       "url": "https://www.last.fm/music/blxty",
       "image": ""
     },
@@ -140,7 +140,7 @@
     },
     {
       "name": "Dani Kiyoko",
-      "plays": 1048,
+      "plays": 1049,
       "url": "https://www.last.fm/music/Dani+Kiyoko",
       "image": ""
     },
@@ -170,7 +170,7 @@
     },
     {
       "name": "Im a Monster",
-      "plays": 835,
+      "plays": 836,
       "url": "https://www.last.fm/music/Im+a+Monster",
       "image": ""
     },
@@ -218,7 +218,7 @@
     },
     {
       "name": "Gunk",
-      "plays": 638,
+      "plays": 639,
       "url": "https://www.last.fm/music/Gunk",
       "image": ""
     },
@@ -242,7 +242,7 @@
     },
     {
       "name": "bleood",
-      "plays": 530,
+      "plays": 532,
       "url": "https://www.last.fm/music/bleood",
       "image": ""
     },
@@ -360,7 +360,7 @@
     {
       "name": "The Kids Want Sutetchi",
       "artist": "Dani Kiyoko",
-      "plays": 1046,
+      "plays": 1047,
       "url": "https://www.last.fm/music/Dani+Kiyoko/The+Kids+Want+Sutetchi",
       "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/fa754201534ca3da3272a5baa8b1ba79.jpg"
     },
@@ -423,7 +423,7 @@
     {
       "name": "Museum Music",
       "artist": "Im a Monster",
-      "plays": 824,
+      "plays": 825,
       "url": "https://www.last.fm/music/Im+a+Monster/Museum+Music",
       "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/ed7440c5486d6a1e63cc11a883ccb0b3.png"
     },
@@ -528,7 +528,7 @@
     {
       "name": "Stars Fell on Trench",
       "artist": "osquinn",
-      "plays": 559,
+      "plays": 560,
       "url": "https://www.last.fm/music/osquinn/Stars+Fell+on+Trench",
       "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/5975e57647c592c2761e7780d07575ca.jpg"
     },
@@ -626,7 +626,7 @@
     {
       "name": "YOU ONLY LIVE ONE",
       "artist": "kasper gem",
-      "plays": 312,
+      "plays": 313,
       "url": "https://www.last.fm/music/kasper+gem/YOU+ONLY+LIVE+ONE",
       "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/180b14566cff510ab262cb20eca7975e.jpg"
     },
@@ -1013,6 +1013,150 @@
   ],
   "recentTracks": [
     {
+      "name": "Whatcha want 3",
+      "artist": "d0llywood1",
+      "album": "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ",
+      "url": "https://www.last.fm/music/d0llywood1/_/Whatcha+want+3",
+      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/f727a5503f266fcb52689fd70dc1b009.jpg",
+      "date": "21 Nov 2026, 17:55",
+      "uts": 1795283709
+    },
+    {
+      "name": "You're So Rude",
+      "artist": "Gunk",
+      "album": "I LOVE ALL MY DOGS",
+      "url": "https://www.last.fm/music/Gunk/_/You%27re+So+Rude",
+      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/ce90caf0e0766a8a4bfbc4c480066b8e.jpg",
+      "date": "21 Nov 2026, 17:53",
+      "uts": 1795283604
+    },
+    {
+      "name": "Stay Down",
+      "artist": "killjae",
+      "album": "how to kill",
+      "url": "https://www.last.fm/music/killjae/_/Stay+Down",
+      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/b862f4263034a6faae8d06d81cb342cb.jpg",
+      "date": "21 Nov 2026, 17:52",
+      "uts": 1795283525
+    },
+    {
+      "name": "heavy metul",
+      "artist": "Yuke",
+      "album": "Cheetah World 3",
+      "url": "https://www.last.fm/music/Yuke/_/heavy+metul",
+      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/3038c7d7576fb2ed4f7699d5b815ea13.jpg",
+      "date": "21 Nov 2026, 17:49",
+      "uts": 1795283399
+    },
+    {
+      "name": "ONE & DONE",
+      "artist": "kasper gem",
+      "album": "YOU ONLY LIVE ONE",
+      "url": "https://www.last.fm/music/kasper+gem/_/ONE+&+DONE",
+      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/180b14566cff510ab262cb20eca7975e.jpg",
+      "date": "21 Nov 2026, 17:47",
+      "uts": 1795283258
+    },
+    {
+      "name": "Like Lil Mexico",
+      "artist": "Che",
+      "album": "Empty Clip",
+      "url": "https://www.last.fm/music/Che/_/Like+Lil+Mexico",
+      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/00e41e73810f51c7f12c5deab4b62e49.jpg",
+      "date": "21 Nov 2026, 17:44",
+      "uts": 1795283080
+    },
+    {
+      "name": "Real One",
+      "artist": "Im a Monster",
+      "album": "Museum Music",
+      "url": "https://www.last.fm/music/Im+a+Monster/_/Real+One",
+      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/ed7440c5486d6a1e63cc11a883ccb0b3.png",
+      "date": "21 Nov 2026, 17:42",
+      "uts": 1795282966
+    },
+    {
+      "name": "In The Middle",
+      "artist": "kasper gem",
+      "album": "In The Middle",
+      "url": "https://www.last.fm/music/kasper+gem/_/In+The+Middle",
+      "image": "",
+      "date": "21 Nov 2026, 17:40",
+      "uts": 1795282821
+    },
+    {
+      "name": "Hatsune Miku (Kiss Me)",
+      "artist": "Dani Kiyoko",
+      "album": "The Kids Want Sutetchi",
+      "url": "https://www.last.fm/music/Dani+Kiyoko/_/Hatsune+Miku+(Kiss+Me)",
+      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/fa754201534ca3da3272a5baa8b1ba79.jpg",
+      "date": "21 Nov 2026, 17:38",
+      "uts": 1795282701
+    },
+    {
+      "name": "didn't i",
+      "artist": "osquinn",
+      "album": "of the world",
+      "url": "https://www.last.fm/music/osquinn/_/didn%27t+i",
+      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/943e83672b8ca7ce4a44f3018b8cbd70.jpg",
+      "date": "21 Nov 2026, 17:36",
+      "uts": 1795282569
+    },
+    {
+      "name": "CHARLIE MURDER",
+      "artist": "bleood",
+      "album": "rascal 51",
+      "url": "https://www.last.fm/music/bleood/_/CHARLIE+MURDER",
+      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/868745f75bcdf43faf7174b4d9f2b801.jpg",
+      "date": "21 Nov 2026, 17:34",
+      "uts": 1795282459
+    },
+    {
+      "name": "pull up",
+      "artist": "ksuuvi",
+      "album": "pull up",
+      "url": "https://www.last.fm/music/ksuuvi/_/pull+up",
+      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/cdbe07be49816ac144dd9467dd5e2368.jpg",
+      "date": "21 Nov 2026, 17:32",
+      "uts": 1795282335
+    },
+    {
+      "name": "emoji",
+      "artist": "blxty",
+      "album": "bb",
+      "url": "https://www.last.fm/music/blxty/_/emoji",
+      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/6eeabd4b4327fc130db8b8a54bfe48e5.jpg",
+      "date": "21 Nov 2026, 17:30",
+      "uts": 1795282222
+    },
+    {
+      "name": "Eriditia",
+      "artist": "osquinn",
+      "album": "Stars Fell on Trench",
+      "url": "https://www.last.fm/music/osquinn/_/Eriditia",
+      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/5975e57647c592c2761e7780d07575ca.jpg",
+      "date": "21 Nov 2026, 17:26",
+      "uts": 1795281997
+    },
+    {
+      "name": "5B. MiSS U",
+      "artist": "heartstopmiami",
+      "album": "MiSS SWAMP",
+      "url": "https://www.last.fm/music/heartstopmiami/_/5B.+MiSS+U",
+      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/95b4a9599bd8756e9357eae778b663cc.jpg",
+      "date": "21 Nov 2026, 17:22",
+      "uts": 1795281734
+    },
+    {
+      "name": "aw02 angel cry",
+      "artist": "bleood",
+      "album": "kill your idols",
+      "url": "https://www.last.fm/music/bleood/_/aw02+angel+cry",
+      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/738d237801b2c44c75d2d4891d489835.jpg",
+      "date": "20 Nov 2026, 23:34",
+      "uts": 1795217687
+    },
+    {
       "name": "save;File-9",
       "artist": "Kuru",
       "album": "re:wired",
@@ -1317,150 +1461,6 @@
       "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/acf7079c78708eab5eea74ad064d2ef5.jpg",
       "date": "20 Nov 2026, 22:23",
       "uts": 1795213420
-    },
-    {
-      "name": "hywds",
-      "artist": "nettspend",
-      "album": "him",
-      "url": "https://www.last.fm/music/nettspend/_/hywds",
-      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/c98328e5b68a1b6970baa7acfbbc6271.jpg",
-      "date": "20 Nov 2026, 22:21",
-      "uts": 1795213280
-    },
-    {
-      "name": "worth it",
-      "artist": "xaviersobased",
-      "album": "Once More",
-      "url": "https://www.last.fm/music/xaviersobased/_/worth+it",
-      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/5a77f033c9c21ed37c2be3617af6aa8c.jpg",
-      "date": "20 Nov 2026, 22:19",
-      "uts": 1795213187
-    },
-    {
-      "name": "1c34 Bitches Love Itttt!!!!",
-      "artist": "xaviersobased",
-      "album": "who are you?",
-      "url": "https://www.last.fm/music/xaviersobased/_/1c34+Bitches+Love+Itttt!!!!",
-      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/9cc2ef4e9527ccf5fde77f5ae3dc49b3.jpg",
-      "date": "20 Nov 2026, 22:16",
-      "uts": 1795212990
-    },
-    {
-      "name": "2 Deep",
-      "artist": "killjae",
-      "album": "how to kill",
-      "url": "https://www.last.fm/music/killjae/_/2+Deep",
-      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/b862f4263034a6faae8d06d81cb342cb.jpg",
-      "date": "20 Nov 2026, 22:14",
-      "uts": 1795212885
-    },
-    {
-      "name": "Like Me",
-      "artist": "osquinn",
-      "album": "Stars Fell on Trench",
-      "url": "https://www.last.fm/music/osquinn/_/Like+Me",
-      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/5975e57647c592c2761e7780d07575ca.jpg",
-      "date": "20 Nov 2026, 22:14",
-      "uts": 1795212843
-    },
-    {
-      "name": "fone bone",
-      "artist": "Harto Falión",
-      "album": "ACADEMY",
-      "url": "https://www.last.fm/music/Harto+Fali%C3%B3n/_/fone+bone",
-      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/169c5ca01b58e473aa7175ea70a26a61.jpg",
-      "date": "20 Nov 2026, 22:12",
-      "uts": 1795212727
-    },
-    {
-      "name": "Everyday",
-      "artist": "heartstopmiami",
-      "album": "Sic Parvis Magna",
-      "url": "https://www.last.fm/music/heartstopmiami/_/Everyday",
-      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/151b6102170a6721442ba68f6e221d17.jpg",
-      "date": "20 Nov 2026, 22:08",
-      "uts": 1795212531
-    },
-    {
-      "name": "Goin dummi",
-      "artist": "d0llywood1",
-      "album": "Let me die",
-      "url": "https://www.last.fm/music/d0llywood1/_/Goin+dummi",
-      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/939dcb39154143ea7f867198357b075a.jpg",
-      "date": "20 Nov 2026, 22:05",
-      "uts": 1795212332
-    },
-    {
-      "name": "Zombie",
-      "artist": "osquinn",
-      "album": "Stars Fell on Trench",
-      "url": "https://www.last.fm/music/osquinn/_/Zombie",
-      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/5975e57647c592c2761e7780d07575ca.jpg",
-      "date": "20 Nov 2026, 22:04",
-      "uts": 1795212289
-    },
-    {
-      "name": "1A. i MiSS DA SWAMP — prologue",
-      "artist": "heartstopmiami",
-      "album": "MiSS SWAMP",
-      "url": "https://www.last.fm/music/heartstopmiami/_/1A.+i+MiSS+DA+SWAMP+%E2%80%94+prologue",
-      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/95b4a9599bd8756e9357eae778b663cc.jpg",
-      "date": "20 Nov 2026, 22:01",
-      "uts": 1795212098
-    },
-    {
-      "name": "apparition",
-      "artist": "Kuru",
-      "album": "re:wired",
-      "url": "https://www.last.fm/music/Kuru/_/apparition",
-      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/58d9131bf582c8eb4f4572e89d76a92e.jpg",
-      "date": "20 Nov 2026, 21:59",
-      "uts": 1795211971
-    },
-    {
-      "name": "Mona Lisa",
-      "artist": "nettspend",
-      "album": "him",
-      "url": "https://www.last.fm/music/nettspend/_/Mona+Lisa",
-      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/c98328e5b68a1b6970baa7acfbbc6271.jpg",
-      "date": "20 Nov 2026, 21:57",
-      "uts": 1795211859
-    },
-    {
-      "name": "Student",
-      "artist": "d0llywood1",
-      "album": "#B4LMD",
-      "url": "https://www.last.fm/music/d0llywood1/_/Student",
-      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/aa1850f327f79d5adaa82818c148a5fa.jpg",
-      "date": "20 Nov 2026, 21:55",
-      "uts": 1795211713
-    },
-    {
-      "name": "U2",
-      "artist": "zootzie",
-      "album": "Terminal Z (EP)",
-      "url": "https://www.last.fm/music/zootzie/_/U2",
-      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/14af4dc57bb10acc73bfcf49e30a4363.jpg",
-      "date": "20 Nov 2026, 21:53",
-      "uts": 1795211622
-    },
-    {
-      "name": "Terms And Conditions",
-      "artist": "osquinn",
-      "album": "Stars Fell on Trench",
-      "url": "https://www.last.fm/music/osquinn/_/Terms+And+Conditions",
-      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/5975e57647c592c2761e7780d07575ca.jpg",
-      "date": "20 Nov 2026, 21:49",
-      "uts": 1795211378
-    },
-    {
-      "name": "Real Business",
-      "artist": "Im a Monster",
-      "album": "Museum Music",
-      "url": "https://www.last.fm/music/Im+a+Monster/_/Real+Business",
-      "image": "https://lastfm-img.freetls.fastly.net/i/u/174s/ed7440c5486d6a1e63cc11a883ccb0b3.png",
-      "date": "20 Nov 2026, 21:47",
-      "uts": 1795211232
     }
   ]
 }
