@@ -660,38 +660,6 @@ table {
 }
 
 
-/* ---- Footer ---- */
-
-.site-footer {
-  padding: 18px 0 22px;
-  border-top: 1px solid var(--border);
-  background: var(--panel);
-}
-
-.footer-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 4px 16px;
-}
-
-.footer-copy,
-.footer-stamp {
-  margin: 0;
-  font-size: 13.5px;
-  color: var(--muted);
-}
-
-.rss-link {
-  font-weight: 650;
-  color: #f27717;
-
-  [data-theme="dark"] & { color: #f2914a; }
-
-  &:hover { text-decoration-thickness: 2px; }
-}
-
 /* ---- Projects ---- */
 
 .projects-grid {
