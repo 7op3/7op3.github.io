@@ -3,6 +3,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>
   (function () {
+    var month = new Date().getMonth();
+    var season = ['winter', 'spring', 'summer', 'autumn'][Math.floor(((month + 1) % 12) / 3)];
+    document.documentElement.setAttribute('data-season', season);
     try {
       var t = localStorage.getItem('theme');
       if (t !== 'light' && t !== 'dark') {
