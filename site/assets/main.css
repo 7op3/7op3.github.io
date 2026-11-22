@@ -280,6 +280,7 @@ a {
   font-weight: 700;
   color: var(--text);
   letter-spacing: -0.04em;
+  overflow-wrap: anywhere;
 }
 
 .panel-content {
@@ -853,6 +854,7 @@ table {
 .anilist-item-details {
   flex: 1;
   min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .anilist-item-title {
@@ -1059,7 +1061,7 @@ table {
   .panel-content,
   .home-intro { padding: 22px 20px; }
 
-  .page-heading { font-size: 26px; }
+  .page-heading { font-size: 24px; }
 
   .anilist-stats { gap: 10px; font-size: 12.5px; }
 }
