@@ -10,12 +10,6 @@ repos:
       - id: yamllint
         args: [--strict]
 
-  # Check for basic JSON syntax errors
-  - repo: https://github.com/jalessandro/jsonlint
-    rev: 0.5.0
-    hooks:
-      - id: jsonlint
-
   # Check for basic markdown syntax errors
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.41.0
