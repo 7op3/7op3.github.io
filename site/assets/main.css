@@ -325,6 +325,11 @@ a {
 .panel-content > :last-child,
 .home-intro > :last-child { margin-bottom: 0; }
 
+.now-updated {
+  color: var(--muted);
+  font-size: 0.85em;
+}
+
 blockquote {
   margin: 16px 0;
   padding: 4px 16px;
