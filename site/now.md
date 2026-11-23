@@ -5,7 +5,7 @@ permalink: /now/
 updated: "2026-11-23"
 ---
 
-<p class="now-updated">Last updated <time datetime="{{ updated }}">{{ updated | date: "%d %B %Y" }}</time></p>
+<p class="now-updated">Last updated <time datetime="{{ updated }}">{{ updated | date: "%d %B %Y", "UTC" }}</time></p>
 
 A little snapshot of what has my attention at the moment. Less of a bio, more of a “what's happening lately?”
 
