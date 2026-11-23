@@ -62,8 +62,8 @@ server-side state, no forms. Trust boundaries:
 - Anonymous internet visitor (no login exists anywhere — settled by the code).
 - Party controlling third-party metadata returned by Last.fm/AniList.
 - Abuser of the public Worker (quota exhaustion, using it as a proxy).
-- Supply chain: npm devDependencies, GitHub Actions (`actions/checkout@v4`,
-  `actions/github-script@v7`, by tag), pre-commit hooks.
+- Supply chain: npm devDependencies, GitHub Actions (`actions/checkout@v7.0.1`,
+  `actions/github-script@v9`, by tag), pre-commit hooks.
 
 ## Existing controls
 
