@@ -105,4 +105,5 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add site/_data/anilist.json
           git commit -m "Update AniList data" || true
+          git pull --rebase
           git push
